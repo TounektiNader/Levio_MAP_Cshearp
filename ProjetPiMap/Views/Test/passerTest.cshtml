@@ -1,0 +1,442 @@
+﻿@model ProjetPiMap.Models.QuestionList
+
+
+@{
+    Layout = null;
+    int counter = 1;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/ContentA/assets/plugins/toast-master/css/jquery.toast.css" rel="stylesheet">
+
+ 
+    <link href="~/ContentA/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- morris CSS -->
+    <link href="~/ContentA/assets/plugins/morrisjs/morris.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/ContentA/assets/plugins/dropify/dist/css/dropify.min.css">
+
+
+    <link href="../../../maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+    <link href='https://fonts.googleapis.com/css?family=Give+You+Glory' rel='stylesheet' type='text/css'>
+
+    <link href="~/ContentQues/css/app.css" rel="stylesheet">
+    <link href="~/ContentQues/css/style.css" rel="stylesheet" type="text/css">
+    <link href="~/ContentQues//css/magnific-popup.css" rel="stylesheet" type="text/css">
+
+    <!-- <link href='http://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'> -->
+
+    <link rel="stylesheet" href="../../../maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/united/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/readable/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="../../../cdnjs.cloudflare.com/ajax/libs/animate.css/3.3.0/animate.min.css" rel="stylesheet">
+    <link href="../../../code.jboxcdn.com/0.3.2/jBox.css" rel="stylesheet">
+
+    <link href="../../../vjs.zencdn.net/4.12/video-js.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <style>
+        body {
+            background-color: #F4F3EE;
+        }
+
+        .thumbnail {
+            position: relative;
+            padding: 0px;
+            margin-bottom: 20px;
+        }
+
+        .footer-block-left {
+            background: url(../../img/blog-footer-azl-ecole.png) top center no-repeat;
+            padding: 92px 10px 0;
+            width: 280px;
+            min-height: 80px;
+            font-size: 12px;
+            color: #595959;
+            line-height: 16px;
+        }
+
+            .footer-block-left a {
+                font-weight: bold;
+            }
+
+        .footer-block-right {
+            background: url(../../img/blog-footer-azl-culture.png) top center no-repeat;
+            padding: 92px 10px 0;
+            width: 280px;
+            min-height: 80px;
+            font-size: 12px;
+            color: #595959;
+            line-height: 16px;
+        }
+
+            .footer-block-right a {
+                font-weight: bold;
+            }
+
+        .thumbnail img {
+            width: 100%;
+            border-bottom: 1px solid #eee;
+        }
+
+        .handWriting {
+            font-family: 'Architects Daughter', cursive;
+            font-size: 23px !important;
+            padding-top: 2px;
+        }
+
+        .helpIcon {
+            cursor: pointer;
+        }
+
+        .grab {
+            cursor: move;
+        }
+
+        .draggable {
+            overflow: hidden;
+            z-index: 99;
+        }
+
+        .droppable {
+            background-color: grey;
+        }
+
+        .hovered {
+            background-color: #eee;
+        }
+
+        .correct {
+            background-color: #3FAD46;
+        }
+
+        .incorrect {
+            background-color: #D9534F;
+        }
+
+        .element {
+            min-height: 150px;
+            max-height: 150px;
+        }
+
+        .image-link {
+            cursor: zoom-in;
+        }
+
+        * {
+            border-radius: 0 !important;
+        }
+
+        .font_GEO {
+            font-family: Georgia, "Times New Roman", Times, serif;
+        }
+
+        .fs16-14 {
+            font-size: 3em;
+            font-family: Georgia, "Times New Roman", Times, serif;
+            color: #FFF !important;
+            margin-bottom: 10px;
+        }
+
+        .fs17-14 {
+            font-family: Georgia, "Times New Roman", Times, serif;
+            font-size: 23px;
+            line-height: 1em;
+            font-style: italic;
+            color: #999999;
+            margin-bottom: 10px;
+        }
+
+            .fs17-14 img {
+                margin: 0 5px 10px 0;
+            }
+
+
+
+
+
+            .item {
+    position: relative;
+    float: left;
+}
+
+.item h2 {
+    text-align:center;
+    position: absolute;
+    line-height: 125px;
+    width: 100%;
+}
+
+svg {
+   -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+.circle_animation {
+  stroke-dasharray: 440; /* this value is the pixel circumference of the circle */
+  stroke-dashoffset: 440;
+  transition: all 1s linear;
+}
+    </style>
+   
+</head>
+<body>
+    <p>@ViewBag.Error</p>
+
+  
+
+
+    <div class="hidden-phone" style="text-align:center;">
+        <script type='text/javascript'>
+					document.MAX_ct0 ='';
+					var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
+					var m3_r = Math.floor(Math.random()*99999999999);
+					document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+					document.write ("zoneid=321961");document.write("&amp;nodis=1");
+					document.write ('&amp;cb=' + m3_r);
+					if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+					document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+					document.write ("&amp;loc=" + escape(window.location).substring(0,1600));
+					if (document.context) document.write ("&context=" + escape(document.context));
+					if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
+						document.write ("&amp;ct0=" + escape(document.MAX_ct0));
+					}
+					if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+
+					document.write ("'></scr"+"ipt>");
+        </script>
+    </div>
+    <br />
+
+    <div id="taboola-mid-article-thumbnails"></div>
+    <script type="text/javascript">
+			  window._taboola = window._taboola || [];
+			  _taboola.push({
+			    mode: 'thumbnails-MidArticle',
+			    container: 'taboola-mid-article-thumbnails',
+			    placement: 'Mid Article Thumbnails',
+			    target_type: 'mix'
+			  });
+    </script>
+
+
+    <div class="panel panel-default  teadsSlot ">
+       
+        
+        <div class="panel-heading">
+            <center> <h3 class="panel-title"><strong>Test @Model.tests[1].type</strong><i></i></h3></center>
+        </div>
+
+        <div class="item html" style="left: 680px;top: 10px;">
+            <h2>0</h2>
+            <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">
+                <g>
+                    <title>Layer 1</title>
+                    <circle id="circle" class="circle_animation" r="69.85699" cy="81" cx="81" stroke-width="8" stroke="#6fdb6f" fill="none" />
+                </g>
+            </svg>
+        </div>
+
+        <div class="panel-body" style="margin-top: 160px;">
+
+            <div style="margin-bottom:0px;" class="alert alert-info">
+                <p><strong><i class="fa fa-info-circle"></i> Help : </strong> Answer the questions</p>
+            </div>
+
+            
+         <br />
+          
+
+          @using (Html.BeginForm("passerTest", "Test", FormMethod.Post, new { enctype = "multipart/form-data" }))
+   {
+
+    <form>
+        @for (int i = 0; i < Model.tests.Count; i++)
+        {
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title"><i class="fa fa-pencil-square-o"></i> Question n° @counter <span class="pull-right"><i title="Cochez la bonne r&eacute;ponse." class="fa fa-question-circle helpIcon"></i></span></h4>
+                </div>
+                <div class="panel-body">
+
+                    <blockquote>
+                        <p>@Model.tests[i].question</p>
+                    </blockquote>
+
+                    <div class="radio">
+                        <label>
+
+
+
+
+                            @Html.CheckBoxFor(m => Model.tests[i].IsCheckedR)
+                            @Model.tests[i].reponse
+                            @Html.HiddenFor(mbox => Model.tests[i].reponse)
+                            @Html.HiddenFor(mbox => Model.tests[i].testId)
+                            @Html.HiddenFor(mbox => Model.tests[i].type)
+
+
+
+
+
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            @Html.CheckBoxFor(m => Model.tests[i].IsCheckedR1)
+                            @Model.tests[i].choix1
+
+                            @Html.HiddenFor(mbox => Model.tests[i].choix1)
+                            @Html.HiddenFor(mbox => Model.tests[i].testId)
+                            @Html.HiddenFor(mbox => Model.tests[i].reponse)
+                            @Html.HiddenFor(mbox => Model.tests[i].type)
+
+
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            @Html.CheckBoxFor(m => Model.tests[i].IsCheckedR2)
+                            @Model.tests[i].choix2
+
+
+                            @Html.HiddenFor(mbox => Model.tests[i].choix2)
+                            @Html.HiddenFor(mbox => Model.tests[i].testId)
+                            @Html.HiddenFor(mbox => Model.tests[i].reponse)
+                            @Html.HiddenFor(mbox => Model.tests[i].type)
+
+
+
+
+                        </label>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+            counter = counter + 1;
+        }
+
+    
+
+
+        <div class="form-group">
+            <div class="col-lg-2 col-md-4">
+                <input type="submit" value="Apply" class="btn btn-info"  style="width: 176px;" />
+            </div>
+            <div class="col-lg-2 col-md-4">
+                <input type="submit" value="Cancel" class="btn btn-danger" style="width: 176px;"/>
+            </div>
+
+          </div>
+
+       
+       
+</form>
+   }
+                            </div>
+
+                        </div>
+ 
+
+
+    @*<script>
+    var dt = '@ViewBag.Rem_Time';
+    var dateAr = dt.split('-');
+    var newDate = dateAr[1] + '/' + dateAr[0] + '/' + dateAr[2];
+
+    var end = new Date(dateAr[1] + '/' + dateAr[0] + '/' + dateAr[2]);
+
+    var _second = 1000;
+    var _minute = _second * 60;
+    var _hour = _minute * 60;
+    var _day = _hour * 24;
+    var timer;
+
+    function showRemaining() {
+        var now = new Date();
+        var distance = end - now;
+        if (distance < 0) {
+            clearInterval(timer);
+            document.getElementById('timecountdown').innerHTML = 'Count Down Ends!';
+            window.location.href = '/Folder/Index';
+
+            return;
+        }
+        var days = Math.floor(distance / _day);
+        var _hours = Math.floor((distance % _day) / _hour);
+        var _minutes = Math.floor((distance % _hour) / _minute);
+        var _seconds = Math.floor((distance % _minute) / _second);
+
+        document.getElementById('timecountdown').innerHTML = ' Hrs: ' + _hours;
+        document.getElementById('timecountdown').innerHTML += ' Mins: ' + _minutes;
+        document.getElementById('timecountdown').innerHTML += ' Secs: ' + _seconds;
+    }
+    timer = setInterval(showRemaining, 1000);
+    </script>*@
+
+    <script>
+        setTimeout(function () {
+
+            var time = 60; /* how long the timer will run (seconds) */
+            var initialOffset = '440';
+            var i = 1
+
+            /* Need initial run as interval hasn't yet occured... */
+            $('.circle_animation').css('stroke-dashoffset', initialOffset - (1 * (initialOffset / time)));
+
+            var interval = setInterval(function () {
+                $('h2').text(i);
+                if (i == time) {
+                    clearInterval(interval);
+                    window.location.href = '/Folder/Index';
+                    return;
+                }
+                $('.circle_animation').css('stroke-dashoffset', initialOffset - ((i + 1) * (initialOffset / time)));
+                i++;
+            }, 1000);
+
+        }, 0)
+
+
+    </script>
+
+        <script src="~/ContentA/assets/plugins/jquery/jquery.min.js"></script>
+   
+        <!-- Bootstrap tether Core JavaScript -->
+        <script src="~/ContentA/assets/plugins/bootstrap/js/popper.min.js"></script>
+
+        <script src="~/ContentA/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+        <!-- slimscrollbar scrollbar JavaScript -->
+        <script src="~/ContentA/js/jquery.slimscroll.js"></script>
+        <!--Wave Effects -->
+        <script src="~/ContentA/js/waves.js"></script>
+        <!--Menu sidebar -->
+        <script src="~/ContentA/js/sidebarmenu.js"></script>
+        <!--stickey kit -->
+        <script src="../assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+        <script src="~/ContentA/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+        <!--Custom JavaScript -->
+        <script src="~/ContentA/js/custom.min.js"></script>
+       
+        <!-- Custom Theme JavaScript -->
+        <!-- ============================================================== -->
+  
+        <!-- Style switcher -->
+        <!-- ============================================================== -->
+        <script src="~/ContentA/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+
+</body>
+
+</html>

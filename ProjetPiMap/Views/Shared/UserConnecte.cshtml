@@ -1,0 +1,13 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+   
+  
+        @Html.AntiForgeryToken()
+
+                <div class="card-body">
+                    <h4>@Html.ActionLink(User.Identity.GetUserName() , "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</h4>
+                </div>
+    
+}
+

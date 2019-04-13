@@ -1,0 +1,129 @@
+﻿@model  IEnumerable<Domain.Entities.Claim> 
+
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/TempleAdmin.cshtml";
+}
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Home/list of Claim</a></li>
+        </ol>
+    </div>
+    <div>
+        <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Container fluid  -->
+<!-- ============================================================== -->
+
+
+@using (Html.BeginForm())
+    { 
+    <table>
+            <tr>
+                <td>
+                    <div>
+                        Search @Html.TextBox("recherche")
+                    </div>
+                </td>
+                <td> <input type="submit" value="Search" id="submit" /> </td>
+            </tr>
+        </table>
+}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="row">
+                
+                <div class="col-xlg-10 col-lg-12 col-md-8 bg-light-part b-l">
+                   
+                    <div class="card-body p-t-0">
+                        <div class="card b-all shadow-none">
+                            <div class="inbox-center table-responsive">
+                                <table class="table table-hover no-wrap">
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                           
+                                            <tr class="unread">
+                                                <td style="width:40px">
+                                                <td class="hidden-xs-down" style="column-width:80px"> @Html.DisplayFor(modelItem => item.user.image)</td>
+
+                                            
+                                            <td class="hidden-xs-down">@Html.DisplayFor(modelItem => item.user.firstname) @Html.DisplayFor(modelItem => item.user.lastname)</td>
+                                            <td class="hidden-xs-down" style="column-width:80px" > @Html.DisplayFor(modelItem => item.topic)</td>
+                                            <td class="text-right" style="column-width:80px" > @Html.DisplayFor(modelItem => item.type)</td>
+                                                <td class="text-right" style="column-width:80px"> @Html.DisplayFor(modelItem => item.response)</td>
+
+                                                <td class="mdi mdi-file-document-box">  @Html.ActionLink("Details", "Details", new { id = item.recId }) </td>
+                                                    <td class="mdi mdi-delete">@Html.ActionLink("Delete", "Delete", new { id = item.recId })</td>
+                                                    <td class="mdi mdi-file-document-box">@Html.ActionLink("Edit", "Edit", new { id = item.recId })</td>
+
+
+
+                                                </tr>
+                                        }                                                                                                                                                                                                                             
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts{
+    <script src="~/ContentA/assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="~/ContentA/assets/plugins/bootstrap/js/popper.min.js"></script>
+
+    <script src="~/ContentA/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="~/ContentA/js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="~/ContentA/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="~/ContentA/js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+    <script src="~/ContentA/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="~/ContentA/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <!--Custom JavaScript -->
+    <script src="~/ContentA/js/custom.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <!--morris JavaScript -->
+    <script src="~/ContentA/assets/plugins/raphael/raphael-min.js"></script>
+    <script src="~/ContentA/assets/plugins/morrisjs/morris.min.js"></script>
+    <!-- sparkline chart -->
+    <script src="~/ContentA/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <script src="~/ContentA/js/dashboard4.js"></script>
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+    <script src="~/ContentA/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+
+
+}
+
+
+
+
+
+
+

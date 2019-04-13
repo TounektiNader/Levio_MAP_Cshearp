@@ -1,0 +1,97 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="~/Scripts/Charts/highcharts.js"></script>
+    <script src="~/Scripts/Charts/exporting.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div>
+        <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+    </div>
+
+    <script>
+
+
+        $(document).ready(function (){
+            $.getJSON("/Dashboard/GetData", function (data) {
+
+                Highcharts.chart('container', {
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                        type: 'pie'
+                    },
+                    title: {
+                        text: 'Available offers sorted by Type, 2018'
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                style: {
+                                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                                }
+                            }
+                        }
+                    },
+                    series: [{
+                        name: 'Offers',
+                        colorByPoint: true,
+                        data: [{
+                            name: 'Big Data',
+                            y: data.BigData
+                        }, {
+                            name: 'Business Intelligence',
+                            y: data.BI
+                        }, {
+                            name: 'Data Analytics',
+                            y: data.DA
+                        }, {
+                            name: 'Data Mining',
+                            y: data.DM
+                        }, {
+                            name: 'Data Science',
+                            y: data.DS
+                        }, {
+                            name: 'Network & Security',
+                            y: data.SN
+                        }, {
+                            name: 'Full Stack',
+                            y: data.FullStack
+                        }, {
+                            name: 'Integrator',
+                            y: data.Integrator
+                        }, {
+                            name: 'Tester',
+                            y: data.Tester
+                        }]
+                    }]
+                });
+                });
+            });
+S
+    </script>
+</body>
+</html>
+
+
+
+
+

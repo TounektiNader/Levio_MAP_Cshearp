@@ -1,0 +1,93 @@
+﻿@model IEnumerable<ProjetPiMap.Models.AttachmentModel>
+@{
+    ViewBag.Title = "listAttachments";
+    Layout = "~/Views/Shared/TempleAdmin.cshtml";
+}
+@section templte2{
+
+   <link href="~/Content/styles.css" rel="stylesheet" media="screen">
+
+    }
+
+
+
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor">Table basic</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+            <li class="breadcrumb-item">pages</li>
+            <li class="breadcrumb-item active">Job Request</li>
+        </ol>
+    </div>
+    <div>
+        <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="main-container">
+      
+        <div class="row">
+
+           @foreach (var item in Model)
+           {
+            <div class="box-view-doc">
+                <div class="view-doc doc-bg-01">
+                    <div class="overlay-links">
+                        <a href="pdf/pdf.pdf" download data-toggle="tooltip" data-placement="bottom" title="Download"><i class="fa fa-cloud-download"></i></a>
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Archive" class="archive"><i class="fa fa-archive"></i></a>
+                        <div class="view-screen">
+                            <a href='@Url.Action("ShowFile", "Attachment", new { attachment = @Html.DisplayFor(modelItem => item.lienAttachment) })' target="_blank">view document</a>
+                        </div>
+                    </div>
+                </div>
+              
+                    <ul class="view-doc-info list-unstyled">
+                        <li><h4>@Html.DisplayFor(modelItem => item.typeAttachment)</h4></li>
+                        <li><p>Date: <span>09 Sep 2016</span></p></li>
+                      
+                        <li><p>Status: <span class="alert alert-success"><i class="fa fa-check"></i>@Html.DisplayFor(modelItem => item.approved)</span></p></li>
+
+                    </ul>
+             
+
+
+            </div>
+
+           }
+</div></div></div>
+
+
+
+    @section Scripts{
+
+
+
+        <script src="~/ContentA/assets/plugins/jquery/jquery.min.js"></script>
+        <!-- Bootstrap tether Core JavaScript -->
+        <script src="~/ContentA/assets/plugins/bootstrap/js/popper.min.js"></script>
+
+        <script src="~/ContentA/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+        <!-- slimscrollbar scrollbar JavaScript -->
+        <script src="~/ContentA/js/jquery.slimscroll.js"></script>
+        <!--Wave Effects -->
+        <script src="~/ContentA/js/waves.js"></script>
+        <!--Menu sidebar -->
+        <script src="~/ContentA/js/sidebarmenu.js"></script>
+        <!--stickey kit -->
+        <script src="~/ContentA/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+        <script src="~/ContentA/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+        <!--Custom JavaScript -->
+        <script src="~/ContentA/js/custom.min.js"></script>
+        <!-- Sweet-Alert  -->
+        <!-- ============================================================== -->
+        <!-- Style switcher -->
+        <!-- ============================================================== -->
+        <script src="~/ContentA/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+
+
+    }

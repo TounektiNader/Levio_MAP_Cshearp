@@ -1,0 +1,130 @@
+﻿@model IEnumerable<ProjetPiMap.Models.ResourcesViewModel>
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="~/Scripts/Charts/highcharts.js"></script>
+    <script src="~/Scripts/Charts/exporting.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div>
+        <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+    </div>
+
+    <script>
+
+
+        $(document).ready(function (){
+            $.getJSON("/Dashboard/GetData1", function (data) {
+
+                Highcharts.chart('container', {
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                        type: 'pie'
+                    },
+                    title: {
+                        text: 'Employee vs. Freelancer, 2018'
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                style: {
+                                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                                }
+                            }
+                        }
+                    },
+                    series: [{
+                        name: 'Employee vs. Freelancer',
+                        colorByPoint: true,
+                        data: [{
+                            name: 'Employee',
+                            y: data.employe
+                        }, {
+                            name: 'Freelancer',
+                            y: data.pigiste
+                        }]
+                    }]
+                });
+                });
+            });
+    </script>
+
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.type)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.type)
+            </td>
+            
+        </tr>
+    }
+</table>
+
+    <br />
+
+    <a class="btn btn-success" href='@Url.Action("ExportReport","Dashboard")'>Download Report</a>
+</body>
+</html>
+
+
+
+
+

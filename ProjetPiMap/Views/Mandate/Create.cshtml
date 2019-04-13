@@ -1,0 +1,69 @@
+﻿@model ProjetPiMap.Models.MandateViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/TempleAdmin.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>MandateViewModel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.startDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" >
+                @Html.EditorFor(model => model.startDate, new { htmlAttributes = new { @class = "form-control datepicker", type = "date" } })
+                @Html.ValidationMessageFor(model => model.startDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.endDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" >
+                @Html.EditorFor(model => model.endDate, new { htmlAttributes = new { @class = "form-control datepicker", type="date" } })
+                @Html.ValidationMessageFor(model => model.endDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.projectid, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" >
+                @Html.EditorFor(model => model.projectid, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.projectid, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    <link href="~/ContenA/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+}
+@section Scripts{
+<script src="~/ContenA/assets/plugins/jquery/jquery.min.js"></script>
+    <script src="~/ContentA/assets/plugins/moment/moment.js"></script>
+<script src="~/ContentA/assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+<script src="~/ContentA/assets/plugins/bootstrap/js/popper.min.js"></script>
+<script src="~/ContentA/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Date Picker Plugin JavaScript -->
+<script src="~/ContenA/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+
+    <script>
+
+        $('#mdate').bootstrapMaterialDatePicker({ weekStart: 0, time: false });
+        $('#timepicker').bootstrapMaterialDatePicker({ format: 'HH:mm', time: true, date: false });
+        $('#date-format').bootstrapMaterialDatePicker({ format: 'dddd DD MMMM YYYY - HH:mm' });
+    </script>
+    }
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

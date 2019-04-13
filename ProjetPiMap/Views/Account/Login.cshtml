@@ -1,0 +1,104 @@
+﻿@using ProjetPiMap.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/TempleClient.cshtml";
+    ViewBag.Title = "Log in";
+}
+
+
+<div class="process-content">
+    <div class="container">
+        <section id="loginForm">
+           
+                <div class="col-md-8" style="left: 250px;">
+
+                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                        @Html.AntiForgeryToken()
+
+                        <!-- SIgn Up -->
+                        <div class="moti-sign">
+                            <h3>Sign In for Levio</h3>
+                            <div class="form-sec" style="margin-left: 0px; height: 200px;">
+
+                                    <!-- Account SetUp -->
+                                    <ul style="margin-left: 7px;">
+                                        <li class="current">
+                                          <h2>Login</h2>
+                                        </li>
+                                    </ul>
+                                <ul>
+                                    <li class="col-md-12">
+                                        @* @Html.LabelFor(model => model.Email, new { @class = "label-control" })*@
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email Address" })
+                                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                    </li>
+                                </ul>
+                                <br />
+                                <ul>
+                                    <li class="col-md-12">
+                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                    </li>
+                               </ul>
+                                <br />
+                                <ul>
+                                    <li class="col-md-12">
+                                        <p>Register as a new user <a href="#.">Sign Up</a></p>
+                                    </li>
+                                </ul>
+                                <br />
+                                <ul>
+                                    <li class="col-md-12">
+                                        <p>
+                                            @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                                        </p>
+                                    </li>
+                                </ul>                               
+                                <br />
+                                <div class="col-md-6" style="right: 20px;"> <input type="submit" class="btn btn-default btn-block" value="Login" style="margin-left: 200px;" /> </div>
+
+                            </div>
+                        </div>
+
+
+                   
+                        
+                    }
+            </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
+                    </div>
+                </div>
+
+
+                  
+                </section>
+
+
+
+                </div>
+
+            </div>
+
+@section Scripts{
+    <script src="~/Content/js/jquery-3.1.1.min.js"></script>
+
+    <script src="~/Content/js/bootstrap.js"></script>
+    <script src="~/Content/js/jquery.ba-outside-events.min.js"></script>
+    <script src="~/Content/js/jquery.inview.min.js"></script>
+    <script src="~/Content/js/jquery.responsive-tabs.js"></script>
+    <script src="~/Content/js/jquery.tagsinput.min.js"></script>
+    <script src="~/Content/js/owl.carousel.html"></script>
+    <script src="~/Content/js/jquery-ui.js"></script>
+    <script src="~/Content/js/scripts.js"></script>
+    <script type="text/javascript">
+      $('#tags').tagsInput();
+    </script>
+    }
+

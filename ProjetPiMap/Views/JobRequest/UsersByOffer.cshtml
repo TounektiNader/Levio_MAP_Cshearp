@@ -1,0 +1,215 @@
+﻿@model IEnumerable<ProjetPiMap.Models.BigViewModel>
+
+@{
+    ViewBag.Title = "UsersByOffer";
+    Layout = "~/Views/Shared/TempleAdmin.cshtml";
+}
+@section templte2 {
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+ <link rel="stylesheet" href="~/ContentB/css/bootstrap.min.css">
+
+<!-- JQUERY SELECT -->
+<link href="~/ContentB/css/select2.min.css" rel="stylesheet" />
+
+<!-- JQUERY MENU -->
+<link rel="stylesheet" href="~/ContentB/css/mega_menu.min.css">
+
+<!-- ANIMATION -->
+<link rel="stylesheet" href="~/ContentB/css/animate.min.css">
+
+<!-- OWl  CAROUSEL-->
+<link rel="stylesheet" href="~/ContentB/css/owl.carousel.css">
+<link rel="stylesheet" href="~/ContentB/css/owl.style.css">
+
+<!-- TEMPLATE CORE CSS -->
+<link rel="stylesheet" href="~/ContentB/css/style.css">
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet" type="text/css" href="~/ContentB/css/font-awesome.min.css">
+<link rel="stylesheet" href="~/ContentB/css/et-line-fonts.css" type="text/css">
+
+<!-- Google Fonts -->
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,900,300" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet" type="text/css">
+
+<!-- JavaScripts -->
+<script src="~/ContentB/js/modernizr.js"></script>
+
+}
+
+
+
+
+
+
+<section class="categories-list-page light-grey">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+
+                <div class="col-md-8 col-sm-12 col-xs-12">
+ @foreach (var item in Model)
+ {
+                          <div class="profile-content">
+                        <div class="card">
+                            <div class="firstinfo">
+                                <img src="~/Content/users/14.jpg" alt="" class="img-circle img-responsive" />
+                                <div class="profileinfo">
+                                    <h1> <a href="#"> @Html.DisplayFor(modelItem => item.resourceViewModel.firstname)  @Html.DisplayFor(modelItem => item.resourceViewModel.firstname)   </a></h1>
+                                    <h3>@Html.DisplayFor(modelItem => item.jobRequestModel.speciality)</h3>                                    
+                                    <p class="bio">@Html.DisplayFor(modelItem => item.resourceViewModel.Email)</p>
+                                    <p class="bio">@Html.DisplayFor(modelItem => item.jobRequestModel.state)</p>
+
+                                    <div class="profile-skills" style="margin-left: 130px;">
+                                        <span> wordpress </span> <span> css3 </span> <span> javascript </span> <span> php </span> <span> laravel </span> <span> woocommerce </span>
+                                    </div>
+                                    <div class="hire-btn">
+                                        <a href='@Url.Action("listAttachmentByJob", "Attachment",new { @idJobRequest=item.jobRequestModel.jobRequestId, @idUser= item.resourceViewModel.userId})' class="btn-default"> <i class="fa fa-location-arrow"></i> Hire Me</a>
+                                    </div>
+                                    
+                                    <div class="hire-btn" style="top: 80px;">
+                                        <a href='@Url.Action("Assigner", "Folder",new { @idJobRequest=item.jobRequestModel.jobRequestId, @idUser= item.resourceViewModel.userId})' class="btn-default"> <i class="fa fa-location-arrow"></i> Assign</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+ }
+                </div>
+                @*<div class="col-md-4 col-sm-12 col-xs-12">
+                    <aside>
+                     
+                        <div class="widget">
+                            <div class="widget-heading"><span class="title">Latest Articles</span></div>
+                            <ul class="related-post">
+                                <li>
+                                    <a href="#">Assistant Manager Procurement </a>
+                                    <span><i class="fa fa-map-marker"></i>Managgo, WC </span>
+                                    <span><i class="fa fa-calendar"></i>March 22, 2015 </span>
+                                </li>
+                                <li>
+                                    <a href="#">Marketing Professionals Required</a>
+                                    <span><i class="fa fa-map-marker"></i>Homelando, New Vage </span>
+                                    <span><i class="fa fa-calendar"></i>Sep 01, 2015</span>
+                                </li>
+                                <li>
+                                    <a href="#">Mobile App Programmers </a>
+                                    <span><i class="fa fa-map-marker"></i>Homelando, New Vage </span>
+                                    <span><i class="fa fa-calendar"></i> - March 09, 2016 </span>
+                                </li>
+                                <li>
+                                    <a href="#">General Compliance Officer</a>
+                                    <span><i class="fa fa-map-marker"></i>Arlington, VA </span>
+                                    <span><i class="fa fa-calendar"></i>Feb 09, 2016</span>
+                                </li>
+                                <li>
+                                    <a href="#">Call Centre Manager</a>
+                                    <span><i class="fa fa-map-marker"></i>Managgo, WC  </span>
+                                    <span><i class="fa fa-calendar"></i> March 09, 2016</span>
+                                </li>
+                                <li>
+                                    <a href="#">Assistant Manager Audit</a>
+                                    <span><i class="fa fa-map-marker"></i>Heling, WC </span>
+                                    <span><i class="fa fa-calendar"></i>Aug 01, 2015 - </span>
+                                </li>
+                                <li>
+                                    <a href="#">Telesales Agent (UK Dialing)</a>
+                                    <span><i class="fa fa-map-marker"></i>Somro, New </span>
+                                    <span><i class="fa fa-calendar"></i>Sep 01, 2015</span>
+                                </li>
+                                <li>
+                                    <a href="#">Assistant Brand Manager</a>
+                                    <span><i class="fa fa-map-marker"></i>Heritage, VA </span>
+                                    <span><i class="fa fa-calendar"></i>May 09, 2016</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </aside>
+                </div>*@
+            </div>
+        </div>
+    </div>
+</section>
+<a href="#" class="scrollup"><i class="fa fa-chevron-up"></i></a>
+@section Scripts {
+
+
+<script type="text/javascript" src="~/ContentB/js/jquery-3.1.1.min.js"></script>
+
+<!-- JAVASCRIPT JS  -->
+<script type="text/javascript" src="~/ContentB/js/jquery-migrate-1.2.1.min.js"></script>
+
+<!-- BOOTSTRAP CORE JS -->
+<script type="text/javascript" src="~/ContentB/js/bootstrap.min.js"></script>
+
+<!-- JQUERY SELECT -->
+<script type="text/javascript" src="~/ContentB/js/select2.min.js"></script>
+<!-- MEGA MENU -->
+<script type="text/javascript" src="~/ContentB/js/mega_menu.min.js"></script>
+
+
+
+<!-- JQUERY COUNTERUP -->
+<script type="text/javascript" src="~/ContentB/js/counterup.js"></script>
+
+<!-- JQUERY WAYPOINT -->
+<script type="text/javascript" src="~/ContentB/js/waypoints.min.js"></script>
+
+<!-- JQUERY REVEAL -->
+<script type="text/javascript" src="~/ContentB/js/footer-reveal.min.js"></script>
+
+<!-- Owl Carousel -->
+<script type="text/javascript" src="~/ContentB/js/owl-carousel.js"></script>
+
+<!-- FOR THIS PAGE ONLY -->
+
+<script src="~/ContentB/js/imagesloaded.js"></script>
+<script src="~/ContentB/js/isotope.min.js"></script>
+
+<!-- CORE JS -->
+<script type="text/javascript" src="~/ContentB/js/custom.js"></script>
+
+<script type="text/javascript">
+            (function($) {
+                "use strict";
+                $('#posts-masonry').imagesLoaded(function() {
+                    $('#posts-masonry').isotope({
+                        layoutMode: 'masonry',
+                        transitionDuration: '0.3s'
+                    });
+                });
+            })(jQuery);
+</script>
+
+
+
+
+
+
+    <script src="~/ContentA/assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="~/ContentA/assets/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="~/ContentA/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="~/ContentA/js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="~/ContentA/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="~/ContentA/js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+    <script src="~/ContentA/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="~/ContentA/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <!--Custom JavaScript -->
+    <script src="~/ContentA/js/custom.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <script src="~/ContentA/js/jasny-bootstrap.js"></script>
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+    <script src="~/ContentA/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+}

@@ -1,0 +1,176 @@
+﻿@model IEnumerable<Domain.Entities.Claim>
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/TempleClient.cshtml";
+}
+
+
+<!-- Stylesheets -->
+<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600" rel="stylesheet">
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="css/jquery.tagsinput.css" />
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/responsive.css">
+
+
+
+
+
+<div class="header-page-title job-registration clearfix">
+    <div class="title-overlay"></div>
+    <div class="container">
+        <h1>List of Your Claim</h1>
+
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li class="active">Project Registration</li>
+        </ol>
+       
+    </div> <!-- end .container -->
+
+</div>
+
+<div class="container-fluid">
+    <!-- ============================================================== -->
+    <!-- Start Page Content -->
+    <!-- ============================================================== -->
+    <!-- Row -->
+    <div class="card-columns widget-app-columns">
+    <!-- ============================================================== -->
+    <!-- Recent Comments copy and paste this code-->
+    <!-- ============================================================== -->
+    <!-- Card -->
+        <div class="card">
+
+
+            <table class="table">
+
+
+                @foreach (var item in Model)
+                {
+
+
+
+
+                    <!-- ============================================================== -->
+                    <!-- Comment widgets -->
+                    <!-- ============================================================== -->
+                    <div class="comment-widgets m-b-30">
+                        <!-- Comment Row -->
+                        <div class="d-flex flex-row comment-row">
+                            <div class="p-20">
+                                <span class="round"><img src="@Url.Content("~/Content/upload/"+item.user.image)" alt="picture" class="img-circle" width="100" height="70" /></span>  @Html.DisplayFor(modelItem => item.user.firstname)
+                                @Html.DisplayFor(modelItem => item.user.lastname)
+                            </div>
+                            <div class="comment-text w-100">
+
+                                <div class="comment-footer">
+                                    <span class="date">Type : @Html.DisplayFor(modelItem => item.type)</span>
+                                    <a href="javascript:void(0)"><i class="mdi mdi-pencil-circle"></i></a>
+                                    <a href="javascript:void(0)"><i class="mdi mdi-checkbox-marked-circle"></i></a>
+                                    <a href="javascript:void(0)"><i class="mdi mdi-heart"></i></a>
+                                </div>
+                                <p class="m-b-5 m-t-10">Topic : @Html.DisplayFor(modelItem => item.topic)</p>
+
+                                <p class="m-b-5 m-t-10">Response : @Html.DisplayFor(modelItem => item.response)</p>
+
+                                <div>
+
+                                    <p class="m-b-5 m-t-10">picture Claim :  <img src="@Url.Content("~/Content/upload/"+item.picture)" alt="picture" class="img-circle" width="100" height="70" /></p>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Comment Row -->
+
+                    </div>
+
+
+                }
+
+            </table>
+        </div>
+
+        <div colspan="7">
+            <div class="text-right">
+                <ul class="pagination"> </ul>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- To Do list copy and paste this code-->
+        <!-- ============================================================== -->
+        <!-- Card -->
+        <!-- ============================================================== -->
+        <!-- Totla Earning copy and paste this code-->
+        <!-- ============================================================== -->
+        <!-- Card -->
+
+    </div>
+   
+    <!-- Row -->
+    <!-- ============================================================== -->
+    <!-- End PAge Content -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Right sidebar -->
+    <!-- ============================================================== -->
+    <!-- .right-sidebar -->
+    <div class="right-sidebar">
+        <div class="slimscrollright">
+            <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+            <div class="r-panel-body">
+                <ul id="themecolors" class="m-t-20">
+                    <li><b>With Light sidebar</b></li>
+                    <li><a href="javascript:void(0)" data-theme="default" class="default-theme">1</a></li>
+                    <li><a href="javascript:void(0)" data-theme="green" class="green-theme">2</a></li>
+                    <li><a href="javascript:void(0)" data-theme="red" class="red-theme">3</a></li>
+                    <li><a href="javascript:void(0)" data-theme="blue" class="blue-theme working">4</a></li>
+                    <li><a href="javascript:void(0)" data-theme="purple" class="purple-theme">5</a></li>
+                    <li><a href="javascript:void(0)" data-theme="megna" class="megna-theme">6</a></li>
+                    <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
+                    <li><a href="javascript:void(0)" data-theme="default-dark" class="default-dark-theme">7</a></li>
+                    <li><a href="javascript:void(0)" data-theme="green-dark" class="green-dark-theme">8</a></li>
+                    <li><a href="javascript:void(0)" data-theme="red-dark" class="red-dark-theme">9</a></li>
+                    <li><a href="javascript:void(0)" data-theme="blue-dark" class="blue-dark-theme">10</a></li>
+                    <li><a href="javascript:void(0)" data-theme="purple-dark" class="purple-dark-theme">11</a></li>
+                    <li><a href="javascript:void(0)" data-theme="megna-dark" class="megna-dark-theme ">12</a></li>
+                </ul>
+                <ul class="m-t-20 chatonline">
+                    <li><b>Chat option</b></li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/1.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="~/ContentA/assets/images/users/2.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="~/ContentA/assets/images/users/3.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="~/ContentA/assets/images/users/4.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="~/ContentA/assets/images/users/5.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="~/ContentA/assets/images/users/6.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="~/ContentA/assets/images/users/7.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="~/ContentA/assets/images/users/8.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Right sidebar -->
+    <!-- ============================================================== -->
+</div>
+

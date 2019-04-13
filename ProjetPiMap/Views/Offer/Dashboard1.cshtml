@@ -1,0 +1,328 @@
+﻿@model ProjetPiMap.Models.OfferViewModel
+
+@{
+    ViewBag.Title = "Dashboard1";
+    Layout = "~/Views/Shared/TempleAdmin.cshtml";
+}
+
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Tell the browser to be responsive to screen width -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<!-- Favicon icon -->
+<link rel="icon" type="image/png" sizes="16x16" href="~/ContentA/assets/images/favicon.png">
+<!-- Bootstrap Core CSS -->
+<link href="~/ContentA/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="~/ContentA/css/style.css" rel="stylesheet">
+<!-- You can change the theme colors from here -->
+<link href="~/ContentA/css/colors/blue.css" id="theme" rel="stylesheet">
+
+@*<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor">General Statistics</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+            <li class="breadcrumb-item">Charts</li>
+            <li class="breadcrumb-item active">General Statistics</li>
+        </ol>
+    </div>
+    <div class="">
+        <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
+    </div>
+</div>*@
+<br />
+<div class="container-fluid">
+    <!-- ============================================================== -->
+    <!-- Start Page Content -->
+    <!-- ============================================================== -->
+    <div class="row">
+        <div class="col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-body analytics-info">
+                    <h4 class="card-title">Customer's Number</h4>
+                    <ul class="list-inline two-part">
+                        <li>
+                            <div id="sparklinedash"></div>
+                        </li>
+                        <li class="text-right"><i class="ti-arrow-up text-success"></i><span class="counter text-success">@Html.DisplayFor(model => model.var1)</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-body analytics-info">
+                    <h4 class="card-title">Employee's Number</h4>
+                    <ul class="list-inline two-part">
+                        <li>
+                            <div id="sparklinedash2"></div>
+                        </li>
+                        <li class="text-right"><i class="ti-arrow-up text-purple"></i> <span class="counter text-purple">@Html.DisplayFor(model => model.var3)</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-body analytics-info">
+                    <h4 class="card-title">Freelancer's Number</h4>
+                    <ul class="list-inline two-part">
+                        <li>
+                            <div id="sparklinedash3"></div>
+                        </li>
+                        <li class="text-right"><i class="ti-arrow-up text-info"></i> <span class="counter text-info">@Html.DisplayFor(model => model.var2)</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="card">
+                <div class="card-body analytics-info">
+                    <h4 class="card-title">Total Users</h4>
+                    <ul class="list-inline two-part">
+                        <li>
+                            <div id="sparklinedash4"></div>
+                        </li>
+                        <li class="text-right"><i class="ti-arrow-down text-danger"></i> <span class="text-danger">@Html.DisplayFor(model => model.var4)</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*chart1*@
+    
+    <script src="~/Scripts/Charts/highcharts.js"></script>
+    <script src="~/Scripts/Charts/exporting.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@ 
+
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/Scripts/Chart.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+
+    <script src="~/Scripts/Charts/highcharts.js"></script>
+    <script src="~/Scripts/Charts/exporting.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+    
+        
+    <div>
+        <div id="container" style="min-width: 310px; height: 400px; max-width: 850px; margin: 0 auto"></div>
+    </div>
+
+    <script>
+
+
+        $(document).ready(function (){
+            $.getJSON("/Dashboard/GetData", function (data) {
+
+                Highcharts.chart('container', {
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                        type: 'pie'
+                    },
+                    title: {
+                        text: 'Available offers sorted by Type, 2018'
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                style: {
+                                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                                }
+                            }
+                        }
+                    },
+                    series: [{
+                        name: 'Offers',
+                        colorByPoint: true,
+                        data: [{
+                            name: 'Big Data',
+                            y: data.BigData
+                        }, {
+                            name: 'Business Intelligence',
+                            y: data.BI
+                        }, {
+                            name: 'Data Analytics',
+                            y: data.DA
+                        }, {
+                            name: 'Data Mining',
+                            y: data.DM
+                        }, {
+                            name: 'Data Science',
+                            y: data.DS
+                        }, {
+                            name: 'Network & Security',
+                            y: data.SN
+                        }, {
+                            name: 'Full Stack',
+                            y: data.FullStack
+                        }, {
+                            name: 'Integrator',
+                            y: data.Integrator
+                        }, {
+                            name: 'Tester',
+                            y: data.Tester
+                        }]
+                    }]
+                });
+                });
+            });
+
+    </script>
+
+    <br />
+
+    @*chart2*@
+
+    <div>
+        <div id="container2" style="min-width: 310px; height: 400px; max-width: 850px; margin: 0 auto"></div>
+    </div>
+
+    <script>
+
+
+        $(document).ready(function (){
+            $.getJSON("/Dashboard/GetData1", function (data) {
+
+                Highcharts.chart('container2', {
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                        type: 'pie'
+                    },
+                    title: {
+                        text: 'Employee vs. Freelancer, 2018'
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                style: {
+                                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                                }
+                            }
+                        }
+                    },
+                    series: [{
+                        name: 'Employee vs. Freelancer',
+                        colorByPoint: true,
+                        data: [{
+                            name: 'Employee',
+                            y: data.employe
+                        }, {
+                            name: 'Freelancer',
+                            y: data.pigiste
+                        }]
+                    }]
+                });
+                });
+            });
+    </script>
+    <br />
+    <a class="btn btn-success" href='@Url.Action("ExportReport","Dashboard")'>Download Report</a>
+
+    <br />
+    @*chart3*@
+
+    <br />
+    <style>
+        #chart_container {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #ddd;
+            padding: 1px;
+            border-radius: 4px;
+        }
+    </style>
+
+    <div id="chart_container">
+        <canvas id="bar-chart" style="min-width: 310px; height: 400px; max-width: 850px; margin: 0 auto"></canvas>
+    </div>
+    
+    <script>
+        var repArray = @Html.Raw(Json.Encode(ViewBag.REP));
+        var jobtype = @Html.Raw(Json.Encode(ViewBag.JOBTYPE));
+
+        //var ctx = $("#bar-chart");
+        var ctx = document.getElementById("bar-chart");
+        var barChart = new Chart(ctx,{
+            type:'bar',
+            data:{
+                labels: jobtype,
+                datasets:[{
+                    label:"Bar Chart Example",
+                    data:repArray,
+                    backgroundColor:["rgba(105,105,105,1.7)","rgba(105,105,105,.5)","(135,206,250,.5)"],
+                    borderColor:["rgb(105,105,105)","rgb(105,105,105)","rgb(105,105,105)"],
+                    //backgroundColor:["rgba(242,166,54,.5)","rgba(145,65,72,.5)","(74,25,92,.5)"],
+                    //borderColor:["rgb(242,166,54)","rgb(145,65,72)","rgb(74,25,92)"],
+                    borderWidth:1
+                }]
+            },
+
+            options:{
+                maintainAspectRatio:false,
+                scales:{xAxes:[{ticks:{beginAtZero:true}}]},
+                legend:{display:false}
+            },
+        });
+    </script>
+
+    <a href="javascript:window.print()"> Print Page </a>
+
+    </div>
+
+
+    @section Scripts{
+        <script src="~/ContentA/assets/plugins/jquery/jquery.min.js"></script>
+        <!-- Bootstrap tether Core JavaScript -->
+        <script src="~/ContentA/assets/plugins/bootstrap/js/popper.min.js"></script>
+
+        <script src="~/ContentA/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+        <!-- slimscrollbar scrollbar JavaScript -->
+        <script src="~/ContentA/js/jquery.slimscroll.js"></script>
+        <!--Wave Effects -->
+        <script src="~/ContentA/js/waves.js"></script>
+        <!--Menu sidebar -->
+        <script src="~/ContentA/js/sidebarmenu.js"></script>
+        <!--stickey kit -->
+        <script src="~/ContentA/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+        <script src="~/ContentA/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+        <!--Custom JavaScript -->
+        <script src="~/ContentA/js/custom.min.js"></script>
+        <script src="~/ContentA/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+        <script src="~/ContentA/assets/plugins/sparkline/jquery.charts-sparkline.js"></script>
+        <!-- ============================================================== -->
+        <!-- Style switcher -->
+        <!-- ============================================================== -->
+        <script src="~/ContentA/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+
+    }

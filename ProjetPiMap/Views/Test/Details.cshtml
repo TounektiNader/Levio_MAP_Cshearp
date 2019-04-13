@@ -1,0 +1,75 @@
+﻿@model ProjetPiMap.Models.TestModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/TempleAdmin.cshtml";
+}
+
+
+
+<p>
+ 
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor">Question</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+            <li class="breadcrumb-item">Question</li>
+            <li class="breadcrumb-item active">Form Details</li>
+        </ol>
+    </div>
+   
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Details Question</h4>
+                <table style="clear: both" class="table table-bordered " id="user">
+                    <tbody>
+                        <tr>
+                            <td width="35%">Type Question </td>
+                            <td width="65%"><a href="#" id="inline-username" data-type="text" data-pk="1" data-title="Enter username">@Html.DisplayFor(model => model.type)</a></td>
+                        </tr>
+                        <tr>
+                            <td>Question</td>
+                            <td><a href="#" id="inline-comments" data-type="textarea" data-pk="1" data-placeholder="Your comments here..." data-title="Enter comments">@Html.DisplayFor(model => model.question)</a></td>
+                        </tr>
+                        <tr>
+                            <td>Correct Answer</td>
+                            <td>
+                                <a href="#" id="inline-firstname" data-type="text" data-pk="1" data-placement="right"  data-title="Enter your firstname">
+                                    @Html.DisplayFor(model => model.reponse)
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Choice 1</td>
+                            <td>
+                                <a href="#" id="inline-sex" data-type="select" data-pk="1" data-value="" data-title="Select sex">
+                                    @Html.DisplayFor(model => model.choix1)
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Choice 2</td>
+                            <td><a href="#" id="inline-status" data-type="select" data-pk="1" data-value="0" data-source="/status" data-title="Select status">@Html.DisplayFor(model => model.choix2)</a></td>
+                        </tr>
+                     
+                       
+                      
+                    </tbody>
+                </table>
+                <a href="#" id="inline-dob" data-type="combodate" data-value="2015-09-24" data-format="YYYY-MM-DD" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="1" data-title="Select Date of birth"></a>
+
+            </div>
+        </div>
+    </div>
+</div>

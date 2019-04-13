@@ -1,0 +1,93 @@
+﻿@model IEnumerable<ProjetPiMap.Models.ProjectViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/TempleAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.projectId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.state)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numberResource)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.startDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.endDay)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.customer.firstname)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.projectId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.state)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numberResource)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.duration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.startDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.endDay)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.customer.firstname)
+        </td>
+        <td>
+            @if (item.isApprouve)
+            {
+                <p>deja approuvé</p>
+            }
+            else
+            {
+
+            @Html.ActionLink("Approuve", "Approuve", new { id = item.projectId })
+            }
+            
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new {  id=item.projectId  })
+        </td>
+    </tr>
+}
+
+</table>

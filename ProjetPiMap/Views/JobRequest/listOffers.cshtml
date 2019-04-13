@@ -1,0 +1,212 @@
+﻿@model IEnumerable<ProjetPiMap.Models.OfferViewModel>
+
+@{
+    ViewBag.Title = "listOffers";
+    Layout = "~/Views/Shared/TempleAdmin.cshtml";
+}
+
+@section templte2 {
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/css/bootstrap.css">
+    <link rel="stylesheet" href="~/Content/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/jquery.tagsinput.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/owl.carousel.css" />
+    <link rel="stylesheet" href="~/Content/css/styles.css">
+    <link rel="stylesheet" href="~/Content/css/responsive.css">
+
+}
+
+
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor">Offers</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+            <li class="breadcrumb-item">Offers</li>
+            <li class="breadcrumb-item active">Lists</li>
+        </ol>
+    </div>
+
+</div>
+
+<div class="container-fluid">
+    <!-- ============================================================== -->
+    <!-- Start Page Content -->
+    <!-- ============================================================== -->
+    <div class="row">
+        <!-- column -->
+
+
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Table Of Offers </h4>
+
+
+
+             
+
+                                    <div class="col-md-12">
+                                        <div class="main-content" id="add-client">
+                                        </div> <!-- end .view-sort div -->
+
+                                        <div class="table-responsive-small">
+
+                                            <div class="editing-link">
+                                                
+
+                                                <div class="search-content">
+
+
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                                                        <input type="text" id="Search" placeholder="Search" class="form-control" />
+
+                                                    </div>
+
+                                                </div>
+
+
+
+                                            </div> <!-- end .editing-link -->
+
+                                            <div class="clients-list">
+
+                                                <div class="table-heading">
+                                                    <div class="css-table">
+
+                                                        <div class="table-details css-table-cell">
+                                                            <h5>Offers</h5>
+                                                        </div>
+
+                                                        <div class="clients-job css-table-cell">
+                                                            <h5>Requests</h5>
+                                                        </div>
+
+                                                    </div> <!-- end .css-table -->
+                                                </div> <!-- end .table-heading -->
+                                                @foreach (var item in Model)
+
+                                                {
+                                                    <div class="Search">
+                                                        <div class="clients-job-single">
+                                                            <div class="css-table">
+
+
+                                                                <div class="company-logo-area css-table-cell">
+                                                                    <img src="~/Content/img/levio.png" alt="">
+                                                                </div> <!-- end .company-logo-area -->
+
+                                                                <div class="table-details css-table-cell">
+
+                                                                    <div class="company-name">
+                                                                        <h4><a href="#">@Html.DisplayFor(modelItem => item.JobType)</a></h4>
+                                                                    </div> <!-- end .company-name -->
+
+                                                                    <div class="company-description">
+                                                                        <h4><a href="#">@Html.DisplayFor(modelItem => item.JobExperience)</a></h4>
+                                                                    </div> <!-- end .job-description -->
+
+                                                                    <div class="job-location-stat">
+                                                                        <p><a href="#"><i class="fa fa-map-marker"></i>@Html.DisplayFor(modelItem => item.JobDescription)</a></p>
+
+                                                                        <ul class="list-inline pull-right">
+                                                                            <li>Expected Salary: <strong>$ @Html.DisplayFor(modelItem => item.ExpectedSalary)</strong></li>
+                                                                            <li>Experience: <strong>@Html.DisplayFor(modelItem => item.JobExperience)</strong></li>
+                                                                            <li>Requirement: <strong>@Html.DisplayFor(modelItem => item.JobRequirements)</strong></li>
+                                                                        </ul>
+                                                                    </div> <!-- end .job-location-stat -->
+                                                                </div> <!-- end .table-details -->
+
+                                                                <div class="clients-job css-table-cell">
+                                                                    <h4><a href='@Url.Action("UsersByOffer", "JobRequest",new { id=item.offerId})'>@Html.DisplayFor(modelItem => item.userId) <span>See Jobs<i class="fa fa-external-link"></i></span> </a></h4>
+                                                                </div> <!-- end .days-left -->
+
+                                                            </div> <!-- end .css-table -->
+                                                        </div> <!-- end .clients-job-single -->
+                                                    </div>
+                                                }
+
+
+                                          
+                            </div> <!-- end .row -->
+                        </div> <!-- end container -->
+                    </div> <!-- end .page-content -->
+
+                    </div></div></div></div></div>
+
+
+
+                    @section Scripts {
+
+                        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+                        <script>
+                            $(document).ready(function () {
+
+                                function Contains(text_one, text_two) {
+                                    if (text_one.indexOf(text_two) != -1)
+                                        return true;
+                                }
+
+
+                                $("#Search").keyup(function () {
+
+                                    var searchText = $("#Search").val().toLowerCase();
+                                    $(".Search").each(function () {
+
+                                        if (!Contains($(this).text().toLowerCase(), searchText))
+                                        { $(this).hide(); }
+                                        else {
+
+                                            $(this).show();
+                                        }
+
+                                    });
+
+                                });
+
+                            });
+                        </script>
+
+
+                        <script src="~/Content/js/jquery-3.1.1.min.js"></script>
+                        <script src="~/Content/js/jquery.ba-outside-events.min.js"></script>
+
+                        <script src="~/Content/js/bootstrap.js"></script>
+                        <script src="~/Content/js/jquery.inview.min.js"></script>
+                        <script src="~/Content/js/jquery.responsive-tabs.js"></script>
+                        <script src="~/Content/js/jquery.tagsinput.min.js"></script>
+                        <script src="~/Content/js/owl.carousel.html"></script>
+                        <script src="~/Content/js/jquery-ui.js"></script>
+                        <script src="~/Content/js/scripts.js"></script>
+
+
+                        <script type="text/javascript">
+                            $('#tags').tagsInput();
+                        </script>
+                        <script src="~/ContentA/assets/plugins/jquery/jquery.min.js"></script>
+                        <!-- Bootstrap tether Core JavaScript -->
+                        <script src="~/ContentA/assets/plugins/bootstrap/js/popper.min.js"></script>
+                        <script src="~/ContentA/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+                        <!-- slimscrollbar scrollbar JavaScript -->
+                        <script src="~/ContentA/js/jquery.slimscroll.js"></script>
+                        <!--Wave Effects -->
+                        <script src="~/ContentA/js/waves.js"></script>
+                        <!--Menu sidebar -->
+                        <script src="~/ContentA/js/sidebarmenu.js"></script>
+                        <!--stickey kit -->
+                        <script src="~/ContentA/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+                        <script src="~/ContentA/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+                        <!--Custom JavaScript -->
+                        <script src="~/ContentA/js/custom.min.js"></script>
+                        <!-- ============================================================== -->
+                        <!-- This page plugins -->
+                        <!-- ============================================================== -->
+                        <script src="~/ContentA/js/jasny-bootstrap.js"></script>
+                        <!-- ============================================================== -->
+                        <!-- Style switcher -->
+                        <!-- ============================================================== -->
+                        <script src="~/ContentA/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+                    }

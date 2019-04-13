@@ -1,0 +1,376 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/TempleClient.cshtml";
+}
+
+@section templte2{
+
+    <link rel="stylesheet" href="~/ContentB/css/bootstrap.min.css">
+    <!-- JQUERY SELECT -->
+    <link href="~/ContentB/css/select2.min.css" rel="stylesheet" />
+    <!-- JQUERY MENU -->
+    <link rel="stylesheet" href="~/ContentB/css/mega_menu.min.css">
+    <!-- ANIMATION -->
+    <link rel="stylesheet" href="~/ContentB/css/animate.min.css">
+    <!-- OWl  CAROUSEL-->
+    <link rel="stylesheet" href="~/ContentB/css/owl.carousel.css">
+    <link rel="stylesheet" href="~/ContentB/css/owl.style.css">
+    <!-- TEMPLATE CORE CSS -->
+    <link rel="stylesheet" href="~/ContentB/css/style.css">
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" type="text/css" href="~/ContentB/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/ContentB/css/et-line-fonts.css" type="text/css">
+    <!-- Google Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,900,300" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet" type="text/css">
+}
+
+<section class="index5-main-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12 nopadding">
+                <div class="employer-main-section parallex-employer">
+                    <h1>Hundreds of users searching for their Dream Job.</h1>
+                    <p>Our organization offers a stimulating environment to advance your career by enhancing your skills and know-how.</p>
+
+                    <a class="btn-default" href='@Url.Action("Register","Account")'>Sign up <i class="fa fa-angle-right"></i> </a>
+                    @*@Html.ActionLink("Home", "Index", "Client", null, new { @area = "Clients" })*@
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12 nopadding">
+                <div class="employee-main-section parallex-employee">
+                    <h1>The Easiest way to get your New Dream job.</h1>
+                    <p>We are looking for people with personality who crave action and for whom IT is a passion.</p>
+                    <a href='@Url.Action("Login","Account")' class="btn-default">Sign In <i class="fa fa-angle-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="Heading-title black">
+                    <h1>Latest Jobs</h1>
+                    <p>We promote a coaching approach to optimize the knowledge and competency of each member. Each employee has access to a dedicated yearly fund for professional development to help them reach their full potential. We also offer a large package of fringe benefits.</p>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="all-jobs-list-box2">
+                    <div class="job-box job-box-2">
+                        <div class="col-md-2 col-sm-2 col-xs-12 hidden-sm">
+                            <div class="comp-logo">
+                                <a href="#"><img src="~/Content/img/levio.png" class="img-responsive" alt="scriptsbundle"> </a>
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+                            <div class="job-title-box">
+                                <a href="#">
+                                    <div class="job-title"> Technical Documentation Specialist</div>
+                                </a> <a href="#"><span class="comp-name">conversi Pvt. Ltd. United States </span></a>
+                                <a href="#" class="job-type jt-full-time-color"> <i class="fa fa-clock-o"></i> Full time </a>
+                            </div>
+                            <p>Prompta numquam mel ad, tempor definiebas id usu, cum cu feugiat bonorum. Eu pri labores maiorum patrioque, sea an tation utinam. Idque albucius prodesset ei est, sea te vide contentiones consectetuer.......<a href="#">Read More</a> </p>
+                        </div>
+                        <div class="job-salary"> <i class="fa fa-money"></i> $400 - $500 </div>
+                    </div>
+                    <div class="job-box job-box-2">
+                        <div class="col-md-2 col-sm-2 col-xs-12  hidden-xs hidden-sm">
+                            <div class="comp-logo">
+                                <a href="#"><img src="~/Content/img/levio.png" class="img-responsive" alt="scriptsbundle"> </a>
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+                            <div class="job-title-box">
+                                <a href="#">
+                                    <div class="job-title"> Assistant Engineer (IT/Networks)</div>
+                                </a> <a href="#"><span class="comp-name">conversi Pvt. Ltd. Malaysia</span></a>
+                                <a href="#" class="job-type jt-part-time-color"> <i class="fa fa-clock-o"></i> Part Time </a>
+                            </div>
+                            <p>Prompta numquam mel ad, tempor definiebas id usu, cum cu feugiat bonorum. Eu pri labores maiorum patrioque, sea an tation utinam. Idque albucius prodesset ei est, sea te vide contentiones consectetuer.......<a href="#">Read More</a> </p>
+                        </div>
+                        <div class="job-salary"> <i class="fa fa-money"></i> $200 - $300 </div>
+                    </div>
+                    <div class="job-box job-box-2">
+                        <div class="col-md-2 col-sm-2 col-xs-12  hidden-xs hidden-sm">
+                            <div class="comp-logo">
+                                <a href="#"><img src="~/Content/img/levio.png" class="img-responsive" alt="scriptsbundle"> </a>
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+                            <div class="job-title-box">
+                                <a href="#">
+                                    <div class="job-title"> Technical Network Director (IT/Networks)</div>
+                                </a> <a href="#"><span class="comp-name">conversi Pvt. Ltd. United States</span></a>
+                                <a href="#" class="job-type jt-remote-color"> <i class="fa fa-clock-o"></i> Remote </a>
+                            </div>
+                            <p>Prompta numquam mel ad, tempor definiebas id usu, cum cu feugiat bonorum. Eu pri labores maiorum patrioque, sea an tation utinam. Idque albucius prodesset ei est, sea te vide contentiones consectetuer.......<a href="#">Read More</a> </p>
+                        </div>
+                        <div class="job-salary"> <i class="fa fa-money"></i> $200 - $250 </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="facts">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-3 col-xs-6">
+                <div class="fact-box">
+                    <div class="single-facts-area">
+                        <div class="facts-icon"> <i class="icon-megaphone"></i> </div>
+                        <span class="counter">180</span>
+                        <h3>Jobs</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3 col-xs-6">
+                <div class="fact-box">
+                    <div class="single-facts-area">
+                        <div class="facts-icon"> <i class="icon-document"></i> </div>
+                        <span class="counter">175</span>
+                        <h3> Resume </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3 col-xs-6">
+                <div class="fact-box">
+                    <div class="single-facts-area">
+                        <div class="facts-icon"> <i class="icon-profile-male"></i> </div>
+                        <span class="counter">20</span>
+                        <h3>Members</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3 col-xs-6">
+                <div class="fact-box">
+                    <div class="single-facts-area">
+                        <div class="facts-icon"> <i class="icon-toolbox"></i> </div>
+                        <span class="counter">2142</span>
+                        <h3>Company</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="categories-section-2">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                <div class="categories-section-2">
+                    <ul id="popular-categories">
+                        <li><a href="#"><i class="fa fa-line-chart"></i> Accounting Jobs <span>( 230 )</span></a></li>
+                        <li><a href="#"><i class="fa fa-wrench"></i> Automotive Jobs <span>( 930 )</span></a></li>
+                        <li><a href="#"><i class="fa fa-building-o"></i> Construction Jobs <span>( 560 )</span></a></li>
+                        <li><a href="#"><i class="fa fa-graduation-cap"></i> Educational Jobs <span>( 150 )</span></a></li>
+                        <li><a href="#"><i class="fa fa-medkit"></i> Healthcare Jobs <span>( 458 )</span> </a></li>
+                        <li><a href="#"><i class="fa fa-cutlery"></i> Food Service Jobs <span>( 652 )</span></a></li>
+                        <li><a href="#"><i class="fa fa-globe"></i> Logistics Jobs <span>( 552 )</span></a></li>
+                        <li><a href="#"><i class="fa fa-laptop"></i> Telecom Jobs <span>( 87 )</span></a></li>
+                        <li><a href="#"><i class="fa fa-home"></i> Real Estate Jobs <span>( 332 )</span></a></li>
+                        <li><a href="#"><i class="fa fa-plane"></i> Designing Jons <span>( 85 )</span></a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="blog-posts-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="Heading-title black">
+                        <h1>Featured News</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="blog-post">
+                        <div class="post-img">
+                            <a href="#"> <img src="~/ContentB/images/blog/4.jpg" alt="" class="img-responsive"> </a>
+                        </div>
+                        <div class="post-info"> <a href="#">July 30, 2016</a> <a href="#">1 comments</a> </div>
+                        <h3 class="post-title"> <a href="#"> Are you looking for pefect job for free lancing work </a> </h3>
+                        <p class="post-excerpt"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam neque tempora odit atque repellat est molestiae perferendis. </p>
+                    </div>
+                </div>
+                <div class="clearfix visible-sm"></div>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="blog-post">
+                        <div class="post-img">
+                            <a href="#"> <img src="~/ContentB/images/blog/5.jpg" alt="" class="img-responsive"> </a>
+                        </div>
+                        <div class="post-info"> <a href="#">July 30, 2016</a> <a href="#">1 comments</a> </div>
+                        <h3 class="post-title"> <a href="#"> Lorem ipsum dolor sit amet adierm miedin fro geting </a> </h3>
+                        <p class="post-excerpt"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam neque tempora odit atque repellat est molestiae perferendis. </p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="blog-post">
+                        <div class="post-img">
+                            <a href="#"> <img src="~/ContentB/images/blog/6.jpg" alt="" class="img-responsive"> </a>
+                        </div>
+                        <div class="post-info"> <a href="#">June 30, 2016</a> <a href="#">20 comments</a> </div>
+                        <h3 class="post-title"> <a href="#"> Lorem ipsum dolor sit amet adierm miedin fro geting </a> </h3>
+                        <p class="post-excerpt"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam neque tempora odit atque repellat est molestiae perferendis. </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@*<div id="page-content">
+
+        <div class="index-page-search-content">
+            <div id="owl-demo" class="owl-carousel owl-theme">
+                <img style="background: url('~/Content/img/home-bg.jpg') center center no-repeat; background-size:cover" />
+                <div class="item" style="background: url('~/Content/img/home-bg.jpg')  center center no-repeat; background-size: cover;"></div>
+                    <div class="item" style="background: url('~/Content/img/home-bg2.jpg') center center no-repeat; background-size: cover;"></div>
+                    <div class="item" style="background: url('~/Content/img/home-bg3.jpg') center center no-repeat; background-size: cover;"></div>
+            </div>
+            <div class="container">
+                <div class="search-holder">
+                    <h1>Levio</h1>
+                    <h2>Accompagnies you from the idea to the benefit</h2>
+
+                    <div id="header-search">
+                        <div class="header-search-bar">
+                            <div class="">
+                                <form>
+                                    <div class="basic-form clearfix">
+                                        <a href="#" class="toggle"><span></span></a>
+                                        <div class="hsb-input-1">
+                                            <input type="text" class="form-control" placeholder="Keywords">
+                                        </div>
+                                        <div class="hsb-text-1">in</div>
+                                        <div class="hsb-container">
+                                            <div class="hsb-input-2">
+                                                <input type="text" class="form-control" placeholder="Location">
+                                            </div>
+                                            <div class="hsb-select">
+                                                <select class="form-control">
+                                                    <option value="0">Select Category</option>
+                                                    <option value="">Banking</option>
+                                                    <option value="">Finance</option>
+                                                    <option value="">IT</option>
+                                                    <option value="">Specialists</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="hsb-submit">
+                                            <button type="submit" class="btn btn-default btn-block"><i class="fa fa-search"></i><span>Search</span></button>
+                                        </div>
+                                    </div>
+                                    <div class="advanced-form">
+                                        <div class="">
+                                            <div class="row">
+                                                <label class="col-md-3">Distance</label>
+                                                <div class="col-md-9">
+                                                    <div class="range-slider">
+                                                        <div class="slider" data-min="1" data-max="200" data-current="100"></div>
+                                                        <div class="last-value"><span>100</span> km</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <label class="col-md-3">Rating</label>
+                                                <div class="col-md-9">
+                                                    <div class="range-slider">
+                                                        <div class="slider" data-min="1" data-max="100" data-current="20"></div>
+                                                        <div class="last-value">&gt; <span>20</span> %</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <label class="col-md-3">Days Published</label>
+                                                <div class="col-md-9">
+                                                    <div class="range-slider">
+                                                        <div class="slider" data-min="1" data-max="60" data-current="30"></div>
+                                                        <div class="last-value">&lt; <span>30</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <label class="col-md-3">Location</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control" placeholder="Switzerland">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <label class="col-md-3">Category</label>
+                                                <div class="col-md-9">
+                                                    <select class="form-control">
+                                                        <option value="">Select Category</option>
+                                                        <option value="">Banking</option>
+                                                        <option value="">Finance</option>
+                                                        <option value="">IT</option>
+                                                        <option value="">Specialists</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+         end .container
+
+
+    </div>*@
+
+@section Scripts{
+    <script src="~/Content/js/jquery-3.1.1.min.js"></script>
+    <script src="~/Content/js/bootstrap.js"></script>
+    <script src="~/Content/js/jquery.ba-outside-events.min.js"></script>
+    <script src="~/Content/js/jquery.responsive-tabs.js"></script>
+    <script src="~/Content/js/jquery.flexslider-min.js"></script>
+    <script src="~/Content/js/jquery.fitvids.js"></script>
+    <script src="~/Content/js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="~/Content/js/jquery.inview.min.js"></script>
+    <script src="~/Content/js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="~/Content/js/owl.carousel.min.js"></script>
+    <script src="~/Content/js/scripts.js"></script>
+
+
+    <script type="text/javascript" src="~/ContentB/js/jquery-3.1.1.min.js"></script>
+    <!-- JAVASCRIPT JS  -->
+    <script type="text/javascript" src="~/ContentB/js/jquery-migrate-1.2.1.min.js"></script>
+    <!-- BOOTSTRAP CORE JS -->
+    <script type="text/javascript" src="~/ContentB/js/bootstrap.min.js"></script>
+    <!-- JQUERY SELECT -->
+    <script type="text/javascript" src="~/ContentB/js/select2.min.js"></script>
+    <!-- MEGA MENU -->
+    <script type="text/javascript" src="~/ContentB/js/mega_menu.min.js"></script>
+    <!-- JQUERY COUNTERUP -->
+    <script type="text/javascript" src="~/ContentB/js/counterup.js"></script>
+    <!-- JQUERY WAYPOINT -->
+    <script type="text/javascript" src="~/ContentB/js/waypoints.min.js"></script>
+    <!-- JQUERY REVEAL -->
+    <script type="text/javascript" src="~/ContentB/js/footer-reveal.min.js"></script>
+    <!-- Owl Carousel -->
+    <script type="text/javascript" src="~/ContentB/js/owl-carousel.js"></script>
+    <!-- CORE JS -->
+    <script type="text/javascript" src="~/ContentB/js/custom.js"></script>
+}
+
+
+
+
+

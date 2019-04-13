@@ -1,0 +1,102 @@
+﻿@model ProjetPiMap.Models.ClientViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/TempleClient.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="process-content">
+        <div class="container">
+
+            <!-- SIgn Up -->
+            <div class="moti-sign">
+                <h3>You email has been validated! Please choose your plan</h3>
+                <div class="form-sec form-in-part">
+                    <div class="process-num">
+
+                        <!-- Account SetUp -->
+                        <ul>
+                            <li>
+                                <p><span>1</span>Account Info</p>
+                            </li>
+                            <li>
+                                <p><span>2</span>Confirm your Email</p>
+                            </li>
+                            <li class="current">
+                                <p><span>3</span>Choose your Plan</p>
+                            </li>
+                            <li>
+                                <p><span>4</span>Account Complete</p>
+                            </li>
+                        </ul>
+                    </div>
+
+
+
+
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="billing-form">
+                        <form>
+                            <ul class="row">
+                                <li class="col-md-6">
+                                    @Html.LabelFor(model => model.type, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                    @Html.EditorFor(model => model.type, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.type, "", new { @class = "text-danger" })
+                                </li>
+                                <li class="col-md-6">
+                                    @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                    @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+                                </li>
+                            </ul>
+
+
+                            <ul>
+                                <li class="col-md-6">
+                                    @Html.LabelFor(model => model.category, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                    @Html.EditorFor(model => model.category, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.category, "", new { @class = "text-danger" })
+                                </li>
+
+
+                            </ul>
+
+
+                            <ul>
+                                <li class="col-md-6">
+                                    @Html.LabelFor(model => model.speciality, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                    @Html.EditorFor(model => model.speciality, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.speciality, "", new { @class = "text-danger" })
+                                </li>
+
+                            </ul>
+
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Create" class="btn-new" />
+                                </div>
+                            </div>
+                        </form>
+
+
+                        <div>
+                            @Html.ActionLink("Back to List", "Index")
+                        </div>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>}

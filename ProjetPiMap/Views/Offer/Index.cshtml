@@ -1,0 +1,369 @@
+﻿@model IEnumerable<ProjetPiMap.Models.OfferViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/TempleClient.cshtml";
+}
+
+<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600" rel="stylesheet">
+<link rel="stylesheet" href="~/Content/css/bootstrap.css">
+<link rel="stylesheet" href="~/Content/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="~/Content/css/jquery.tagsinput.css" />
+<link rel="stylesheet" type="text/css" href="~/Content/css/owl.carousel.css" />
+<link rel="stylesheet" href="~/Content/css/styles.css">
+<link rel="stylesheet" href="~/Content/css/responsive.css">
+
+
+<div class="header-page-title job-registration clearfix">
+    <div class="title-overlay"></div>
+    <div class="container">
+        <h1>Job Search</h1>
+
+        <ol class="breadcrumb">
+            <li><a href="#">Job</a></li>
+            <li class="active">Offer Search</li>
+        </ol>
+
+    </div> <!-- end .container -->
+
+</div> <!-- end .header-page-title -->
+<!-- Page Content -->
+
+<div id="page-content" class="page-content pt60">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 page-sidebar">
+                <aside>
+                    <div class="white-container mb0">
+                        <div class="widget sidebar-widget jobs-search-widget">
+                            <h5 class="widget-title">Search</h5>
+
+                            <div class="widget-content">
+                                <span class="search-tex">I'm looking for a ...</span>
+
+                                <select class="form-control mt10 mb10">
+                                    <option value="0">Job Type</option>
+                                    <option value="">Big data</option>
+                                    <option value="">Business Intelligence</option>
+                                    <option value="">Data analytics</option>
+                                    <option value="">Data science</option>
+                                    <option value="">Full stack</option>
+                                    <option value="">Integrator</option>
+                                    <option value="">Network & Security</option>
+                                    <option value="">Tester</option>
+                                </select>
+                               @* <input type="submit" class="btn btn-default" value="Search">*@
+                            </div>
+                        </div>
+
+                        <div class="widget sidebar-widget jobs-filter-widget">
+                            <h5 class="widget-title">Filter Results</h5>
+
+                            <div class="widget-content">
+                                <h6>By Type</h6>
+
+                                <div>
+                                    <ul class="filter-list">
+                                        <li><a href='@Url.Action("FilterByBigData","Offer")'>Big Data <span>(1)</span></a></li>
+                                        <li><a href=@Url.Action("FilterByBI","Offer")>Business Intelligence <span>(758)</span></a></li>
+                                        <li><a href=@Url.Action("FilterByDA","Offer")>Data analytics <span>(20)</span></a></li>
+                                        <li><a href=@Url.Action("FilterByDM","Offer")>Data mining <span>(165)</span></a></li>
+                                        <li><a href=@Url.Action("FilterByDS","Offer")>Data science <span>(11)</span></a></li>
+                                        <li><a href=@Url.Action("FilterByFullStack","Offer")>Full stack <span>(9)</span></a></li>
+                                        <li><a href=@Url.Action("FilterByIntegrator","Offer")>Integrator <span>(20)</span></a></li>
+                                        <li><a href=@Url.Action("FilterByNS","Offer")>Network & Security <span>(165)</span></a></li>
+                                        <li><a href=@Url.Action("FilterByTester","Offer")>Tester <span>(11)</span></a></li>
+                                    </ul>
+
+                                    <a href="#" class="toggle"></a>
+                                </div>
+
+                                <h6>Work Experience</h6>
+
+                                <div class="checkbox"><label><input type="checkbox"> More than 1 year</label></div>
+                                <div class="checkbox"><label><input type="checkbox"> More than 2 years</label></div>
+                                <div class="checkbox"><label><input type="checkbox"> More than 3 years</label></div>
+                                <div class="checkbox"><label><input type="checkbox"> More than 4 years</label></div>
+                                <div class="checkbox"><label><input type="checkbox"> More than 5 years</label></div>
+                                
+                                <h6>Date Posted</h6>
+
+                                <div class="range-slider clearfix">
+                                    <div class="slider" data-min="1" data-max="60"></div>
+                                    <div class="first-value"><span>1</span> days</div>
+                                    <div class="last-value"><span>60</span> days</div>
+                                </div>
+
+                                <h6>Salary Range</h6>
+
+                                <div class="range-slider clearfix">
+                                    <div class="slider" data-min="1" data-max="6000"></div>
+                                    <div class="first-value">$ <span>1</span></div>
+                                    <div class="last-value">$ <span>100000</span></div>
+                                </div>
+
+                                <input type="submit" class="btn btn-default mt30" value="Filter">
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div> <!-- end .page-sidebar -->
+
+            <div class="col-sm-8 page-content">
+                
+                <div class="view-sort clearfix mb20">
+                    <div class="row">
+
+                        <div class="col-sm-5 main-title">
+                            <h3 class="client-registration-title">Available offers</h3>
+                        </div>
+
+                        <div class="col-sm-7">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                                    <input type="text" id="Search" placeholder="Search" class="form-control" />
+                                    
+                                </div>
+                            </div>
+                          
+                            @*<div class="job-sort-by ml20 pull-right" id="clients-sort-by">
+
+                                <select>
+                                    <option value="#">Sort by</option>
+                                    <option value="#">Name</option>
+                                    <option value="#">Type</option>
+                                    <option value="#">Date</option>
+                                </select>
+
+                            </div>  end .job-sort-by*@ 
+
+                        </div> <!-- end .end col-sm-5 grid-layout  -->
+                    </div> <!-- end .row -->
+                </div> <!-- end .view-sort div -->
+                
+
+
+                    @foreach (var item in Model)
+                    {<div class="Search">
+                <div class="candidate-description client-description applicants-content">
+
+                    <div class="language-print client-des clearfix">
+                        <div class="aplicants-pic pull-left">
+                            <img src="~/Content/img/LevioAvatar.png" alt="">
+                        </div>
+                        <!-- end .aplicants-pic -->
+                        <div class="clearfix">
+                            <div class="pull-left">
+                                <h5>Levio, Quebec, Canada</h5>
+                                <a href="#">@item.JobType</a>
+                            </div>
+
+                        </div>
+
+                        <div class="aplicant-details-show clearfix">
+
+                            <p>
+                                @item.JobDescription
+                            </p>
+                        </div>
+                        <!-- end .aplicant-details-show -->
+                    </div> <!-- end .language-print -->
+                    <ul>
+                        <div class="candidate-details">
+
+                            <div class="toggle-content-client">
+                                <div class="candidate-title">
+                                    <h5>Job Description</h5>
+                                </div>
+
+
+                                <p>
+                                    @item.JobDescription
+                                </p>
+
+
+                                <div class="candidate-skills">
+
+
+                                    <div class="additional-skills">
+                                        <div class="candidate-title mt40">
+                                            <h5>Job Requirements</h5>
+                                        </div>
+
+                                        <ul class="list-inline">
+                                            <li><a href="#"> @item.JobRequirements</a></li>
+                                            <li><a href="#">@item.JobExperience Experience</a></li>
+                                            <li><a href="#">Perfect Written &amp; Spoken English</a></li>
+                                        </ul>
+                                    </div> <!-- end .addintional-skills -->
+
+                                </div> <!-- end .candidate-skills -->
+
+                                <div class="apply-share clearfix">
+
+                                    <ul class="list-inline pull-left job-preview-social-link ">
+                                        <li class="share">Share:</li>
+                                        <li class="facebook-color"><a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=http://www.c-sharpcorner.com/conference2014/#Register&p[images]=&p[title]=&p[summary]="><i class="fa fa-facebook"></i></a></li>
+                                        <li class="twitt-color"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li class="pinterest-color"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    </ul>
+                                </div>
+                                <!-- end .apply-share -->
+                            </div>
+                            <!-- end .toggle-content-client -->
+                            <div class="toggle-details text-right">
+                                <a class="btn btn-toggle" href="#">Info</a>
+                            </div>
+                            <div class="text-right">
+                                <a class="btn btn-default" href='@Url.Action("Details","Offer",new { id = item.offerId })'>Details</a>
+                            </div>
+                        </div>
+
+                        @*<div class="toggle-details text-right">
+                                    <a class="btn btn-toggle" href="#">Info</a>
+
+                                </div>
+                                <!-- end .toggle-details -->
+                            </div> <!-- end .candidate-details -->
+
+                            <div>
+                                <button class="btn btn-default">@Html.ActionLink("Details", "Details", new { id = item.offerId })</button>
+                            </div>*@
+                    </ul>
+
+
+                </div> <!-- end .candidate-description -->
+            </div>
+                    }
+            
+    <div class="pagination-content clearfix">
+                    <p>Displaying 10 out of 50 items</p>
+
+                    <nav>
+                        <ul class="list-inline">
+                            <li><a class="btn btn-default first" href="#">first</a></li>
+                            <li><a class="btn btn-default previous" href="#">Previous</a></li>
+                            <li class="active"><a class="number" href="#">1</a></li>
+                            <li><a class="number" href="#">2</a></li>
+                            <li><a class="number" href="#">3</a></li>
+                            <li><a class="number" href="#">4</a></li>
+                            <li><a class="btn btn-default next" href="#">Next</a></li>
+                            <li><a class="btn btn-default last" href="#">Last</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+             
+              
+             
+            </div> <!-- end .page-content -->
+        </div>
+    </div> <!-- end .container -->
+</div>
+
+@*<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.JobType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobExperience)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobRequirements)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpectedSalary)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobExperience)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobRequirements)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpectedSalary)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.offerId }) |
+           Html.ActionLink("Details", "Details", new { id = item.offerId }) |
+           Html.ActionLink("Delete", "Delete", new { id = item.offerId })
+        </td>
+    </tr>
+}
+</table>*@
+@section Scripts{
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+                   $(document).ready(function () {
+
+                function Contains(text_one,text_two){
+                if(text_one.indexOf(text_two) != -1)
+	                return true;
+                }
+
+
+                $("#Search").keyup(function(){
+
+                var searchText = $("#Search").val().toLowerCase();
+                $(".Search").each(function () {
+
+                if(!Contains($(this).text().toLowerCase(),searchText))
+                     {      $(this).hide();}
+                     else{
+
+                $(this).show();
+                          }
+
+                    });
+
+                    });
+
+                        });
+</script>
+<script src="~/Content/js/jquery-3.1.1.min.js"></script>
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyD0QI6vd531_4xsTobCg_J1_6BZOEolRbs&amp;sensor=false&amp;libraries=geometry&amp;v=3.7"></script>
+<script src="~/Content/js/maplace.min.js"></script>
+<script src="~/Content/js/bootstrap.js"></script>
+<script src="~/Content/js/jquery.ba-outside-events.min.js"></script>
+<script src="~/Content/js/jquery.responsive-tabs.js"></script>
+<script src="~/Content/js/jquery.flexslider-min.js"></script>
+<script src="~/Content/js/jquery.fitvids.js"></script>
+<script src="~/Content/js/jquery-ui-1.10.4.custom.min.js"></script>
+<script src="~/Content/js/jquery.inview.min.js"></script>
+
+<script src="~/Content/js/jquery-ui-1.10.4.custom.min.js"></script>
+<script src="~/Content/js/scripts.js"></script>
+
+
+}

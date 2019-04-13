@@ -1,0 +1,244 @@
+﻿@model IEnumerable<ProjetPiMap.Models.AttachmentModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/TempleClient.cshtml";
+}
+
+
+@section templte2{
+
+    <!-- 2eme Template -->
+
+    <link href="~/ContentC/css/select2.min.css" rel="stylesheet" />
+
+    <!-- JQUERY MENU -->
+    <link rel="stylesheet" href="~/ContentC/css/mega_menu.min.css">
+
+    <!-- ANIMATION -->
+    <link rel="stylesheet" href="~/ContentC/css/animate.min.css">
+
+    <!-- OWl  CAROUSEL-->
+    <link rel="stylesheet" href="~/ContentC/css/owl.carousel.css">
+    <link rel="stylesheet" href="~/ContentC/css/owl.style.css">
+
+    <!-- TEMPLATE CORE CSS -->
+    <link rel="stylesheet" href="~/ContentC/css/style.css">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" type="text/css" href="~/ContentC/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/ContentC/css/et-line-fonts.css" type="text/css">
+
+    <!-- Google Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,900,300" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet" type="text/css">
+
+    <!-- JavaScripts -->
+    <script src="~/ContentC/js/modernizr.js"></script>
+}
+
+
+
+
+@if (@ViewBag.Message != null)
+{
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Success</h4>
+        <p>@ViewBag.Message</p>
+
+    </div>
+
+
+}
+
+
+<section class="dashboard-body">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                    <div class="profile-card">
+                        <div class="banner">
+                            <img src="~/ContentC/images/building.jpg" alt="" class="img-responsive">
+                        </div>
+                        <div class="user-image">
+                            <img src="~/ContentC/images/users/12.jpg" class="img-responsive img-circle" alt="">
+                        </div>
+                        @Html.Partial("UserConnecte")
+                        <ul class="social-network social-circle onwhite">
+                            <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#" class="icoLinkedin" title="Linkedin +"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="profile-nav">
+                        <div class="panel">
+                            <ul class="nav nav-pills nav-stacked">
+                               
+                                <li class="active">
+                                    <a href='@Url.Action("Index", "Attachment")'> <i class="fa fa-file-o"></i>List Attachment </a>
+                                </li>
+                            
+                                <li>
+                                    <a href='@Url.Action("Index", "Folder")'> <i class="fa fa-file-o"></i>Followed Folder</a>
+                                </li>
+                                <li>
+                                    <a href='@Url.Action("Index", "Offer")'> <i class="fa  fa-bookmark-o"></i> Offer Jobs </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-12 col-xs-12">
+                    <div class="heading-inner first-heading">
+                        <p class="title">My Attachment</p>
+                        <a href="javascript:void(0)">
+                        <span class="pull-right add-button btn-default" data-toggle="modal" data-target=".add-resume-modal"> Add New Attachment</span></a>
+
+
+                    </div>
+                    <div class="resume-list">
+                        <div class="table-responsive">
+                            <table class="table  table-striped">
+                                <thead class="thead-inverse">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Type Attachment</th>
+                                        <th>Display</th>
+                                        <th>Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  @foreach (var item in Model)
+                                  {
+                                      <tr>
+                                        <th scope="row">@Html.DisplayFor(modelItem => item.attachmentId)</th>
+                                        <td>
+                                            <h5>@Html.DisplayFor(modelItem => item.typeAttachment)</h5>
+                                        </td>
+                                          <td> <a class="btn btn-primary" href='@Url.Action("ShowFile", "Attachment", new { attachment = @Html.DisplayFor(modelItem => item.lienAttachment) })' target="_blank">Display</a></td>
+                                          
+                                          <td><a class="btn btn-danger" href='@Url.Action("Delete", "Attachment",new{ id=item.attachmentId})'> Delete </a></td>
+                                        
+                                    </tr>
+                                  }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal add-resume-modal" tabindex="-1" role="dialog" aria-labelledby="">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"> Add New Attachment </h4>
+            </div>
+            
+            <div class="modal-body">
+                @using (Html.BeginForm("Create", "Attachment", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                <div class="row clearfix">
+                  
+                     <div class="column col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="Name"  placeholder="Type attachment" >
+                        </div>
+                        
+                    </div>
+                    <div class="column col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            <div class="input-group image-preview form-group">
+                                <input type="text" class="form-control image-preview-filename" disabled="disabled" />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                                        <span class="glyphicon glyphicon-remove"></span> Clear
+                                    </button>
+                                    <div class="btn btn-default image-preview-input">
+                                        <span class="glyphicon glyphicon-folder-open"></span>
+                                        <span class="image-preview-input-title">Browse</span>
+                                        <input type="file" accept="file_extension" name="file" />
+                                    </div>
+                                </span>
+                            </div>
+                            <p>Only pdf and doc files are accepted</p>
+                        </div>
+                        </div>
+                    </div>
+            <div class="modal-footer">
+               
+                <button type="submit" name="submit" class="btn btn-default btn-block">Apply Now</button>
+                
+            </div>
+
+                   }
+        </div>
+    </div>
+</div>
+    </div>
+<a href="#" class="scrollup"><i class="fa fa-chevron-up"></i></a>
+
+
+
+
+@section Scripts{
+
+
+    <!--2eme Template -->
+    <script type="text/javascript" src="~/ContentC/js/jquery-3.1.1.min.js"></script>
+    <!-- JAVASCRIPT JS  -->
+    <script type="text/javascript" src="~/ContentC/js/jquery-migrate-1.2.1.min.js"></script>
+
+    <!-- BOOTSTRAP CORE JS -->
+    <script type="text/javascript" src="~/ContentC/js/bootstrap.min.js"></script>
+
+    <!-- JQUERY SELECT -->
+    <script type="text/javascript" src="~/ContentC/js/select2.min.js"></script>
+    <!-- MEGA MENU -->
+    <script type="text/javascript" src="~/ContentC/js/mega_menu.min.js"></script>
+
+
+
+
+    <script type="text/javascript" src="~/ContentC/js/counterup.js"></script>
+
+    <!-- JQUERY WAYPOINT -->
+    <script type="text/javascript" src="~/ContentC/js/waypoints.min.js"></script>
+
+    <!-- JQUERY REVEAL -->
+    <script type="text/javascript" src="~/ContentC/js/footer-reveal.min.js"></script>
+
+    <!-- Owl Carousel -->
+    <script type="text/javascript" src="~/ContentC/js/owl-carousel.js"></script>
+
+    <!-- FOR THIS PAGE ONLY -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+    <script type="text/javascript" src="~/ContentC/js/map.js"></script>
+
+    <!-- CORE JS -->
+    <script type="text/javascript" src="~/ContentC/js/custom.js"></script>
+    <script src="~/Content/js/jquery-3.1.1.min.js"></script>
+
+    <script src="~/Content/js/bootstrap.js"></script>
+    <script src="~/Content/js/jquery.ba-outside-events.min.js"></script>
+    <script src="~/Content/js/jquery.inview.min.js"></script>
+    <script src="~/Content/js/jquery.responsive-tabs.js"></script>
+    <script src="~/Content/js/jquery.tagsinput.min.js"></script>
+    <script src="~/Content/js/owl.carousel.html"></script>
+    <script src="~/Content/js/jquery-ui.js"></script>
+    <script src="~/Content/js/scripts.js"></script>
+    <script type="text/javascript">
+                        $('#tags').tagsInput();
+    </script>
+
+
+
+
+}

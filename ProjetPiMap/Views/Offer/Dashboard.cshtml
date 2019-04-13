@@ -1,0 +1,59 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/Scripts/Chart.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        #chart_container {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #ddd;
+            padding: 1px;
+            border-radius: 4px;
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="chart_container">
+        <canvas id="bar-chart"></canvas>
+    </div>
+    <script>
+        var repArray = @Html.Raw(Json.Encode(ViewBag.REP));
+        var jobtype = @Html.Raw(Json.Encode(ViewBag.JOBTYPE));
+
+        //var ctx = $("#bar-chart");
+        var ctx = document.getElementById("bar-chart");
+        var barChart = new Chart(ctx,{
+            type:'bar',
+            data:{
+                labels: jobtype,
+                datasets:[{
+                    label:"Bar Chart Example",
+                    data:repArray,
+                    backgroundColor:["rgba(105,105,105,1.7)","rgba(105,105,105,.5)","(135,206,250,.5)"],
+                    borderColor:["rgb(105,105,105)","rgb(105,105,105)","rgb(105,105,105)"],
+                    //backgroundColor:["rgba(242,166,54,.5)","rgba(145,65,72,.5)","(74,25,92,.5)"],
+                    //borderColor:["rgb(242,166,54)","rgb(145,65,72)","rgb(74,25,92)"],
+                    borderWidth:1
+                }]
+            },
+
+            options:{
+                maintainAspectRatio:false,
+                scales:{xAxes:[{ticks:{beginAtZero:true}}]},
+                legend:{display:false}
+            },
+        });
+    </script>
+</body>
+</html>

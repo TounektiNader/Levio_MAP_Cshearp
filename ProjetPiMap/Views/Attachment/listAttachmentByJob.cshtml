@@ -1,0 +1,289 @@
+﻿@model IEnumerable<ProjetPiMap.Models.AttachmentModel>
+@{
+    ViewBag.Title = "listAttachments";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" ContentA="width=device-width" />
+    <title>IndexAdmin</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="~/ContentA/assets/images/favicon.png">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="~/ContentA/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- morris CSS -->
+    <link href="~/ContentA/assets/plugins/morrisjs/morris.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/ContentA/assets/plugins/dropify/dist/css/dropify.min.css">
+
+    <!-- Custom CSS -->
+    <link href="~/ContentA/css/style.css" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="~/ContentA/css/colors/blue.css" id="theme" rel="stylesheet">
+    <!-- Bootstrap Core CSS -->
+    <!-- Custom CSS -->
+    <!-- You can change the theme colors from here -->
+    <link href="~/ContentA/css/colors/blue.css" id="theme" rel="stylesheet">
+
+
+    <link href="~/Content/styles.css" rel="stylesheet">
+</head>
+<body class="fix-header card-no-border">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar">
+           
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- User profile -->
+                <div class="user-profile">
+                    <!-- User profile image -->
+                    <div class="profile-img">
+                        <img src="~/ContentA/assets/images/users/profile.png" alt="user" />
+                        <!-- this is blinking heartbit-->
+                        <div class="notify setpos"> <span class="heartbit"></span> <span class="point"></span> </div>
+                    </div>
+                    <!-- User profile text-->
+                    <div class="profile-text">
+                        <h5>Markarn Doe</h5>
+                        <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><i class="mdi mdi-settings"></i></a>
+                        <a href="app-email.html" class="" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
+                        <a href="pages-login.html" class="" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>
+
+                        <div class="dropdown-menu animated flipInY">
+                            <!-- text-->
+                            <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
+                            <!-- text-->
+                            <a href="#" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a>
+                            <!-- text-->
+                            <a href="#" class="dropdown-item"><i class="ti-email"></i> Inbox</a>
+                            <!-- text-->
+                            <div class="dropdown-divider"></div>
+                            <!-- text-->
+                            <a href="#" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
+                            <!-- text-->
+                            <div class="dropdown-divider"></div>
+                            <!-- text-->
+                            <a href="login.html" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
+                            <!-- text-->
+                        </div>
+                    </div>
+                </div>
+                <!-- End User profile text-->
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li class="nav-devider"></li>
+                        <li class="nav-small-cap">PERSONAL</li>
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard </span></a>
+
+                        </li>
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-bullseye"></i><span class="hide-menu">Projects &amp; Customers</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href='@Url.Action("Index","Project")'>Manage Projects</a></li>
+                                <li><a href='@Url.Action("Index","Client")'>Manage Customers</a></li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href='@Url.Action("Index","AdminClaims")' aria-expanded="false"><i class="mdi mdi-email"></i><span class="hide-menu">Claims</span></a>
+                            <ul aria-expanded="false" class="collapse"></ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Mandate<span class="label label-rouded label-danger pull-right">25</span></span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="ui-cards.html">Mandate in progress</a></li>
+                                <li><a href="ui-user-card.html">Calender</a></li>
+                                <li><a href="ui-buttons.html">Mandates History</a></li>
+
+                            </ul>
+                        </li>
+
+
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-file"></i><span class="hide-menu">Offers</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="form-basic.html">List Offer</a></li>
+                                <li><a href="form-layout.html">Create Offer</a></li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">Resources</span></a>
+                            <ul aria-expanded="false" class="collapse"></ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-widgets"></i><span class="hide-menu">JobRequests</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href='@Url.Action("Index","JobRequest")'>List Jobs Requests</a></li>
+                                <li><a href='@Url.Action("listOffers","JobRequest")'>List offers </a></li>
+
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href='@Url.Action("Index","Test")' aria-expanded="false"><i class="mdi mdi-widgets"></i><span class="hide-menu">Tests</span></a>
+
+                        </li>
+
+
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+       <br />
+         <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div>
+
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                        <h3 class="text-themecolor">Table basic</h3>
+                    </div>
+                    <div class="col-md-7 align-self-center">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                            <li class="breadcrumb-item">Attachment</li>
+                            <li class="breadcrumb-item active">Job Request</li>
+                        </ol>
+                    </div>
+
+                </div>
+
+                <div class="container-fluid">
+
+                    <div class="main-container">
+
+                        <div class="row">
+
+                            @foreach (var item in Model)
+                            {
+                                
+                                <div class="box-view-doc">
+                                    <div class="view-doc doc-bg-01">
+                                        <div class="overlay-links">
+                                            <a href="pdf/pdf.pdf" download data-toggle="tooltip" data-placement="bottom" title="Download"><i class="fa fa-cloud-download"></i></a>
+                                            <a href='@Url.Action("ApprouverAttachment", "Attachment", new { @idAttachment = @Html.DisplayFor(modelItem => item.attachmentId) })' data-toggle="tooltip" data-placement="bottom" title="Approve" class="archive"><i class="fa fa-archive"></i></a>
+                                            <div class="view-screen">
+                                                <a href='@Url.Action("ShowFile", "Attachment", new { attachment = @Html.DisplayFor(modelItem => item.lienAttachment) })' target="_blank">view document</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <ul class="view-doc-info list-unstyled">
+                                        <li><h4>@Html.DisplayFor(modelItem => item.typeAttachment)</h4></li>
+                                        <li><p>Date: <span>09 Sep 2016</span></p></li>
+
+                                        <li><p>Status: <span class="alert alert-success"><i class="fa fa-check"></i>@Html.DisplayFor(modelItem => item.approved)</span></p></li>
+
+                                    </ul>
+
+
+
+                                </div>
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer">
+                <p>2018 &copy; All rights reserved. Powered by <a href="#">Levio</a></p>
+                @*© 2018 Admin Press Admin by themedesigner.in*@
+            </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+
+
+
+
+   
+        <script src="~/ContentA/assets/plugins/jquery/jquery.min.js"></script>
+        <!-- Bootstrap tether Core JavaScript -->
+        <script src="~/ContentA/assets/plugins/bootstrap/js/popper.min.js"></script>
+
+        <script src="~/ContentA/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+        <!-- slimscrollbar scrollbar JavaScript -->
+        <script src="~/ContentA/js/jquery.slimscroll.js"></script>
+        <!--Wave Effects -->
+        <script src="~/ContentA/js/waves.js"></script>
+        <!--Menu sidebar -->
+        <script src="~/ContentA/js/sidebarmenu.js"></script>
+        <!--stickey kit -->
+        <script src="~/ContentA/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+        <script src="~/ContentA/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+        <!--Custom JavaScript -->
+        <script src="~/ContentA/js/custom.min.js"></script>
+        <!-- ============================================================== -->
+        <!-- This page plugins -->
+        <!-- ============================================================== -->
+        <!--morris JavaScript -->
+        <script src="~/ContentA/assets/plugins/raphael/raphael-min.js"></script>
+        <script src="~/ContentA/assets/plugins/morrisjs/morris.min.js"></script>
+        <!-- sparkline chart -->
+        <script src="~/ContentA/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+        <script src="~/ContentA/js/dashboard4.js"></script>
+        <!-- ============================================================== -->
+        <!-- Style switcher -->
+        <!-- ============================================================== -->
+        <script src="~/ContentA/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+
+        <script type="c10b95bfbca0999a34b17d6d-text/javascript" src="~/Content/css/js/jquery.js"></script>
+        <script type="c10b95bfbca0999a34b17d6d-text/javascript" src="~/Content/css/js/jquery-ui.min.js"></script>
+
+        <script type="c10b95bfbca0999a34b17d6d-text/javascript" src="~/Content/css/js/bootstrap.min.js"></script>
+        <script type="c10b95bfbca0999a34b17d6d-text/javascript" src="~/Content/css/js/bootstrap-sprockets.js"></script>
+
+        <script type="c10b95bfbca0999a34b17d6d-text/javascript" src="~/Content/css/js/main.js"></script>
+ 
+
+
+
+</body>
+</html>

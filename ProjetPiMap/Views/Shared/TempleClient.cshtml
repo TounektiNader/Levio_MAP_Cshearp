@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/css/bootstrap.css">
+    <link rel="stylesheet" href="~/Content/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/jquery.tagsinput.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/owl.carousel.css" />
+    <link rel="stylesheet" href="~/Content/css/styles.css">
+    <link rel="stylesheet" href="~/Content/css/responsive.css">
+
+    <script type="application/x-javascript">
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+
+    <link rel="stylesheet" href="~/Content/css/style.css" type="text/css" media="all" />
+
+    <link rel="stylesheet" href="~/Content/css/font-awesome.css">
+
+    <link href="http://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+
+
+
+    @RenderSection("templte2", false)
+
+</head>
+<body>
+
+
+    <div id="main-wrapper" class="our-agents-content">
+
+        <!-- HEADER -->
+        <header id="header">
+            <div class="header-top-bar">
+
+                <!--
+                HEADER TOP BAR WITH NOTIFICATION FOR REGISTER USER
+                -->
+                <!-- end. header-notification-bar  -->
+                <!--
+                END HEADER TOP BAR FOR WITHOUT LOGIN USER
+                -->
+                <!-- Navigation -->
+                <div class="main-navbar">
+
+                    <nav class="navbar navbar-default">
+                        <div class="container">
+
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="index.html"><img src="~/Content/img/levio.png" alt=""></a>
+                            </div>
+                            <div class="col-md-3 col-sm-3">
+                                <div class="logo-section" style="right: 50px;">
+                                    <a href='@Url.Action("Index","Client")'><img src="~/Content/img/levio.png" alt=""></a>
+                                </div>
+                            </div>
+
+                        
+
+                            <div class="col-md-3 col-sm-4">
+                                <div class="notification-section text-right" style="left: 750px;">
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "btn btn-dark btn-sm" }))
+    {
+        @Html.AntiForgeryToken()
+                                    <ul class="list-inline">
+                                      
+                                        <li><a href="#">@Html.ActionLink("Hello " + User.Identity.Name + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+</a></li>
+                                       <a class="btn btn-colored btn-lg btn-theme-colored pl-20 pr-20" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+
+
+  
+                                    </ul>
+    }
+}
+else
+{
+    <ul class="list-inline">
+          
+        <a class="btn btn-colored btn-lg btn-theme-colored pl-20 pr-20" href='@Url.Action("Register", "Account")'>Register</a>
+        <a class="btn btn-colored btn-lg btn-theme-colored pl-20 pr-20" href='@Url.Action("Login", "Account")'>Login</a>
+    </ul>
+
+
+}
+                                </div>
+                            </div>
+
+
+                         
+
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav">
+                                    <li class="active">@Html.ActionLink("Home", "Index", "Client", null, new { @area = "Clients" })</li>
+
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                            Offer
+                                            <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href='@Url.Action("Index","Offer")'>Offer search</a></li>
+                                            <li><a href='@Url.Action("Index","Folder")'>Folder steps</a></li>
+
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                            Customer
+                                            <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="candidate-profile.html">Add Project</a></li>
+                                            <li><a href="candidate-registration.html">My Projects</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                            Claims
+                                            <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="candidate-profile.html">List Claims</a></li>
+                                            <li><a href="candidate-registration.html">Send Claims</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                            Our clients
+                                            <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="clients.html">Our clients</a></li>
+                                            <li><a href="add-client.html">Quick add client</a></li>
+
+                                            <li>  @Html.ActionLink("Client Profile", "ProfilClient", "Client", null, new { @area = "Clients" })</li>
+
+                                            <li><a href="client-registration.html">Client registration</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                            Folder steps
+                                            <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href='@Url.Action("Index","Folder")'>Folder</a></li>
+                                            <li><a href='@Url.Action("Index","Attachment")'>Attachments</a></li>
+                                            
+                                        </ul>
+                                    </li>
+                                    <!-- <li><a href="#">Blog</a></li> -->
+                                    
+
+                                    <li>  @Html.ActionLink("Contact", "ContactUs", "Client", null, new { @area = "Clients" })</li>
+                                </ul>
+
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container -->
+                    </nav>
+                </div> <!-- main-navbar -->
+                <!-- end .header-top-bar -->
+            </div>
+
+
+        </header>
+        <!-- end #header -->
+        <!-- header Search bar -->
+        <!-- end .header-banner -->
+        <!-- Page Content -->
+        <div>
+            @RenderBody()
+        </div>
+        <!-- Footer Start -->
+        <footer id="footer" style="padding-top:0px ;padding-bottom :0px;">
+            <div class="copyright">
+                <div class="container">
+                    <p>2018 © All rights reserved. Powered by <a href="#">Levio</a></p>
+
+                    <ul class="list-inline">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <!-- end #footer -->
+
+    </div>
+
+    <!-- end #main-wrapper -->
+    <!-- Scripts -->
+
+    @RenderSection("Scripts", false)
+
+</body>
+</html>

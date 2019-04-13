@@ -1,0 +1,178 @@
+﻿@model ProjetPiMap.Models.OfferViewModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/TempleAdmin.cshtml";
+}
+
+<div class="container-fluid">
+    <br />
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card card-outline-info">
+                <div class="card-header">
+                    <h4 class="m-b-0 text-white">Are you sure you want to delete this?</h4>
+                </div>
+                @*<div class="card-body">
+                    
+                                <dl class="dl-horizontal">
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.JobType)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.JobType)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.JobExperience)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.JobExperience)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.JobDescription)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.JobDescription)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.JobRequirements)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.JobRequirements)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.PostedOn)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.PostedOn)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.LastDay)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.LastDay)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.ExpectedSalary)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.ExpectedSalary)
+                                    </dd>
+
+                                </dl>
+
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                    <div class="form-actions no-color">
+                                        <input type="submit" value="Delete" class="btn btn-default" /> |
+                                        @Html.ActionLink("Back to List", "IndexA")
+                                    </div>
+                                }
+                        
+                        
+                        </div>*@
+                
+                
+                
+                <div class="card-body">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <form action="#">
+                            <div class="form-body">
+                                <h3 class="card-title">Delete An Offer</h3>
+                                <hr>
+
+                                <!--/row-->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="control-label">
+                                            @*@Html.DisplayFor(model => model.JobType, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })*@
+                                            @Html.EditorFor(model => model.JobType, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.JobType, "", new { @class = "text-danger"})
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="control-label">
+                                            @*@Html.DisplayFor(model => model.JobExperience, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })*@
+                                            @Html.EditorFor(model => model.JobExperience, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.JobExperience, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/row-->
+
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        @*@Html.DisplayFor(model => model.JobDescription, new { htmlAttributes = new { @class = "form-control" } })*@
+                                        @Html.EditorFor(model => model.JobDescription, new { htmlAttributes = new { @class = "form-control", rows = "5", @disabled = "disabled" } })
+                                        @Html.ValidationMessageFor(model => model.JobDescription, "", new { @class = "text-danger", rows = "5" })
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        @Html.EditorFor(model => model.JobRequirements, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                        @Html.ValidationMessageFor(model => model.JobRequirements, "", new { @class = "text-danger" })
+                                        @*@Html.DisplayFor(model => model.JobRequirements, new { htmlAttributes = new { @class = "form-control", rows = "5", @disabled = "disabled" } })*@
+                                    </div>
+                                </div>
+                                <br />
+                                <!--/row-->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="control-label">
+                                            @Html.EditorFor(model => model.ExpectedSalary, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.ExpectedSalary, "", new { @class = "text-danger" })
+                                            @*@Html.DisplayFor(model => model.ExpectedSalary, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })*@
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="control-label">
+                                            @Html.EditorFor(model => model.LastDay, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                                            @Html.ValidationMessageFor(model => model.LastDay, "", new { @class = "text-danger" })
+                                            @*@Html.DisplayFor(model => model.LastDay, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })*@
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/row-->
+                                <br />
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Delete" class="btn btn-info" /> |
+                                        @Html.ActionLink("Back to List", "IndexA")
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+                            

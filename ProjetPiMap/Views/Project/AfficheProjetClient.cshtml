@@ -1,0 +1,213 @@
+﻿@model IEnumerable<ProjetPiMap.Models.ProjectViewModel>
+
+@{
+    ViewBag.Title = "AfficheProjetClient";
+    Layout = "~/Views/Shared/TempleClient.cshtml";
+}
+
+<div class="header-page-title our-agents-header">
+    <div class="title-overlay"></div>
+    <div class="container">
+        <div class="title-breadcrumb clearfix">
+            <h1>My Projects</h1>
+
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li class="active">My Projects</li>
+            </ol>
+        </div> <!-- end .title-breadcrumb -->
+
+    </div> <!-- end .container -->
+</div>
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="main-content" id="add-client">
+            
+
+            <div class="table-responsive-small">
+
+                <div class="editing-link">
+                    
+
+                    <div class="search-content">
+                        <input type="text" placeholder="Search">
+                        <button><i class="fa fa-search"></i></button>
+                    </div>
+                </div> <!-- end .editing-link -->
+
+                <div class="clients-list">
+
+                    <div class="table-heading">
+                        <div class="css-table">
+
+                            <div class="table-details css-table-cell">
+                                <h5>Projects</h5>
+                            </div>
+
+                            <div class="clients-job css-table-cell">
+                                <h5>Actions</h5>
+                            </div>
+
+                        </div> <!-- end .css-table -->
+                    </div> <!-- end .table-heading -->
+@foreach (var item in Model)
+{
+                    <div class="clients-job-single">
+                        <div class="css-table">
+
+                            <div class="checkbox-area css-table-cell">
+                                <input type="checkbox">
+                            </div> <!-- end .checkbox-area -->
+
+                            <div class="company-logo-area css-table-cell">
+                                <img src="img/content/company-logo-1.png" alt="">
+                            </div> <!-- end .company-logo-area -->
+
+                            <div class="table-details css-table-cell">
+
+                               <!-- end .company-name -->
+
+                                <div class="company-description">
+                                    <h4>@Html.DisplayFor(modelItem => item.description)</h4>
+                                </div> <!-- end .job-description -->
+
+                                <div class="job-location-stat">
+                                
+                                    <p>@Html.DisplayFor(modelItem => item.duration)</p>
+
+                                    <ul class="list-inline pull-right">
+                                        <li>price: <strong>@Html.DisplayFor(modelItem => item.price)</strong></li>
+                                        <li>Nbr Resources <strong>@Html.DisplayFor(modelItem => item.numberResource)</strong></li>
+                                        <li>Price of delay <strong>@Html.DisplayFor(modelItem => item.prixRetard)</strong></li>
+                                    </ul>
+                                </div> <!-- end .job-location-stat -->
+                            </div> <!-- end .table-details -->
+
+                            <div class="clients-job css-table-cell">
+
+                                <button type="button" class="btn btn-info" data-toggle="button" data-more="#sh" aria-pressed="false">
+                                    <i class="ti-plus text" aria-hidden="true"></i>
+                                    <i class="ti-minus text-active" aria-hidden="true"></i>
+                                </button>
+
+                                <button type="button" class="btn btn-info" data-toggle="button" data-more="#sh" aria-pressed="false">
+                                    <i class="ti-plus text" aria-hidden="true"></i>
+                                    <i class="ti-minus text-active" aria-hidden="true"></i>
+                                </button>
+
+
+
+                                <td class="btn btn-info">@Html.ActionLink("ajouterPrologation", "ajouterPrologation", new { id = item.projectId }) </td>
+                                    
+                                   
+                            </div> <!-- end .days-left -->
+
+                        </div> <!-- end .css-table -->
+                    </div> <!-- end .clients-job-single -->
+
+                    <!-- end .clients-job-single -->
+
+
+}
+                </div> <!-- end .assigned-job-list -->
+
+
+            </div>
+
+            <div class="pagination-content clearfix pb20">
+               
+
+                <nav>
+                    <ul class="list-inline">
+                        <li><a class="btn btn-default first" href="#">first</a></li>
+                        <li><a class="btn btn-default previous" href="#">Previous</a></li>
+                        <li class="active"><a class="number" href="#">1</a></li>
+                        <li><a class="number" href="#">2</a></li>
+                        <li><a class="number" href="#">3</a></li>
+                        <li><a class="number" href="#">4</a></li>
+                        <li><a class="btn btn-default next" href="#">Next</a></li>
+                        <li><a class="btn btn-default last" href="#">Last</a></li>
+                    </ul>
+                </nav>
+            </div> <!-- end .pagination -->
+
+        </div> <!-- end .main-content -->
+    </div> <!-- end 9th grid layout -->
+</div>
+
+
+
+
+<table class="table">
+    <tr>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.state)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numberResource)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.startDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.endDay)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.prixRetard)
+        </th>
+       
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.state)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numberResource)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.duration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.startDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.endDay)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.prixRetard)
+        </td>
+        
+        <td>
+            @Html.ActionLink("ajouterPrologation", "ajouterPrologation", new {  id=item.projectId }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
